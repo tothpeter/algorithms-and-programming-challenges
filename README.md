@@ -8,3 +8,4 @@
   - recursive
   - recursive with memoize
 - Classic fizz buzz challenge
+- Find unique integer in a list that contains duplicated integers and one single not diplicated one
