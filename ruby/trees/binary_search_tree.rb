@@ -21,6 +21,10 @@ class BinarySearchTree
     return find_second_largest_recursive @root
   end
 
+  def find_second_largest_enhanced
+    return find_second_largest_iterative @root
+  end
+
   private
 
   def add_recursive node, value
@@ -62,6 +66,34 @@ class BinarySearchTree
     end
     
     return node.value
+  end
+
+  def find_second_largest_iterative node
+    current_node = node
+
+    if !node
+      return nil
+    end
+
+    if !node.right
+      return node.value
+    end
+
+    while current_node.right && current_node.right.right
+      current_node = current_node.right
+    end
+
+    if current_node.right && !current_node.right.right && !current_node.right.left
+      return current_node.value
+    end
+
+    current_node = current_node.right.left
+
+    while current_node.right
+      current_node = current_node.right
+    end
+
+    return current_node.value
   end
 
 end
