@@ -29,6 +29,10 @@ class BinarySearchTree
     height_of_node_recursive(@root) - 1
   end
 
+  def height_iterative
+    height_of_node_iterative @root
+  end
+
   def width_recursive
     height_of_node_recursive(@root.left) + height_of_node_recursive(@root.right)
   end
@@ -41,6 +45,29 @@ class BinarySearchTree
     else
       return [height_of_node_recursive(node.left), height_of_node_recursive(node.right)].max + 1
     end
+  end
+
+  def height_of_node_iterative node
+    max = 0
+    node_tuples = [[node,0]]
+
+    while node_tuples.length > 0
+      current_tuple = node_tuples.shift
+      current_node = current_tuple[0]
+      current_level = current_tuple[1]
+      
+      if current_node.left != nil
+        node_tuples << [current_node.left, current_level + 1]
+      end
+
+      if current_node.right != nil
+        node_tuples << [current_node.right, current_level + 1]
+      end
+
+      max = [current_level, max].max
+    end
+
+    max
   end
 
   def add_recursive node, value

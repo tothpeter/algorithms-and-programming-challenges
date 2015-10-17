@@ -139,6 +139,29 @@ describe BinarySearchTree do
     end
   end
 
+  describe '#height_iterative' do
+    describe 'when it has 1 node' do
+      it 'returns the correct height' do
+        bst = BinarySearchTree.new 5
+        
+        expect(bst.height_iterative).to eq 0
+      end
+    end
+
+    describe 'when it has many nodes' do
+      it 'returns the correct height' do
+        bst = BinarySearchTree.new 5
+        bst.add 10
+        bst.add 4
+        bst.add 7
+        bst.add 11
+        bst.add 8
+        
+        expect(bst.height_iterative).to eq 3
+      end
+    end
+  end
+
   # The width of a tree is the number of nodes on the longest path between two terminal nodes (leaves) in the tree
   describe '#width_recursive' do
     describe 'when it has 1 node' do
