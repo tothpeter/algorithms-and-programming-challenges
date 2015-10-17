@@ -117,19 +117,27 @@ describe BinarySearchTree do
   end
 
   describe '#height_recursive' do
-    it 'returns the correct height' do
-      bst = BinarySearchTree.new 5
-      bst.add 10
-      bst.add 4
-      bst.add 7
-      bst.add 11
-      bst.add 8
-      
-      expect(bst.height_recursive).to eq 3
+    describe 'when it has 1 node' do
+      it 'returns the correct height' do
+        bst = BinarySearchTree.new 5
+        
+        expect(bst.height_recursive).to eq 0
+      end
+    end
 
-      bst = BinarySearchTree.new 5
-      
-      expect(bst.height_recursive).to eq 0
+    describe 'when it has many nodes' do
+      it 'returns the correct height' do
+        bst = BinarySearchTree.new 5
+        bst.add 10
+        bst.add 4
+        bst.add 7
+        bst.add 11
+        bst.add 8
+        
+        expect(bst.height_recursive).to eq 3
+      end
+    end
+  end
     end
   end
 end
