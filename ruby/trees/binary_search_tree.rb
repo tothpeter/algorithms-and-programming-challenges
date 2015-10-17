@@ -29,6 +29,10 @@ class BinarySearchTree
     height_of_node_recursive(@root) - 1
   end
 
+  def width_recursive
+    height_of_node_recursive(@root.left) + height_of_node_recursive(@root.right)
+  end
+
   private
 
   def height_of_node_recursive node
