@@ -7,8 +7,11 @@
   - iterative
   - recursive
   - recursive with memoize
-- Classic fizz buzz challenge
 - Find unique integer in a list that contains duplicated integers and one single not diplicated one
+- Classic fizz buzz challenge
+- Find the highest product of 3 integers in an array
+- Multiplication every number in an array axcept the current index
+- Rectangular overlaping
 - Trees
   - Binary search tree
     - add nodes

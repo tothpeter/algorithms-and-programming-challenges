@@ -1,2 +1,3 @@
 ## How to run the test suite
-Just type ```rspec``` in the right directory.
+- Install rspec
+- Type ```rspec``` in the right directory
