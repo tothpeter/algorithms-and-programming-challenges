@@ -3,6 +3,7 @@
 ## The implemented algorithms so far
 
 ### In ruby
+- Find the sub array of an array of integers which has the biggest sum
 - Fibonacci
   - iterative
   - recursive
