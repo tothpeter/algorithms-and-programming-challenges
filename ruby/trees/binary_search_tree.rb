@@ -25,7 +25,19 @@ class BinarySearchTree
     return find_second_largest_iterative @root
   end
 
+  def height_recursive
+    height_of_node_recursive(@root) - 1
+  end
+
   private
+
+  def height_of_node_recursive node
+    if node == nil
+      0
+    else
+      return [height_of_node_recursive(node.left), height_of_node_recursive(node.right)].max + 1
+    end
+  end
 
   def add_recursive node, value
     if value < node.value
