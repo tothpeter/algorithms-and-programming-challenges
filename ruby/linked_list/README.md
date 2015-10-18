@@ -4,4 +4,4 @@
 - Singly linked list
   - add nodes
   - loop detection O(n) time, O(1) space
-  - reverse the order
+  - reverse the order in place O(n) time O(1) space
