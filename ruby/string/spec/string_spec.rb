@@ -35,3 +35,31 @@ describe '#any_palindrome?' do
     expect(any_palindrome?(input)).to eq false
   end
 end
+
+describe '#all_permutation_recursive' do
+  it 'returns all permutation of a given string' do
+    input = "asd"
+    
+    expected_output = [
+      "asd",
+      "ads",
+      "sad",
+      "sda",
+      "das",
+      "dsa",
+    ]
+
+    expect(all_permutation_recursive(input).sort).to eq expected_output.sort
+  end
+
+  it 'returns all permutation of a given string' do
+    input = "as"
+    
+    expected_output = [
+      "as",
+      "sa",
+    ]
+
+    expect(all_permutation_recursive(input).sort).to eq expected_output.sort
+  end
+end

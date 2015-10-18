@@ -71,3 +71,23 @@ def any_palindrome? string
 
   return true
 end
+
+# all permutation recursive
+def all_permutation_recursive input
+  if input.length == 1
+    return [input]
+  end
+
+  sub_result = all_permutation_recursive input[0..-2]
+
+  result = []
+  new_char_to_add = input[-1]
+
+  sub_result.each do |row|
+    (0..row.length).each do |position|
+      result << (row[0...position] + new_char_to_add + row[position..-1])
+    end
+  end
+
+  return result
+end
