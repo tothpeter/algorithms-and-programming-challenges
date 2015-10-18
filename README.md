@@ -18,6 +18,9 @@
 - LRU (last recently used) cache
 - Multiplication every number in an array except the current index
 - Rectangular overlapping
+- String related challenges
+  - Reverse string in place O(n) time, O(1) space
+  - Reverse words in place O(n) time, O(1) space
 - Trees
   - Binary search tree
     - add nodes
