@@ -29,6 +29,20 @@ class SinglyLinkedList
     return false
   end
 
+  def reverse!
+    current_node = @root
+    prev_node = nil
+    
+    while current_node
+      next_node = current_node.next
+      current_node.next = prev_node
+      prev_node = current_node
+      current_node = next_node
+    end
+
+    @root = prev_node
+  end
+
   protected
 
   def insert_at_the_end new_node

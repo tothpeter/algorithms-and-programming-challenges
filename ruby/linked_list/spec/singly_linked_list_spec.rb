@@ -38,4 +38,48 @@ describe SinglyLinkedList do
       expect(list.check_loop).to eq false
     end
   end
+
+  describe '#reverse' do
+    context 'when we have many nodes' do
+      it 'reverses the order of the list' do
+        list = SinglyLinkedList.new
+        list.add 1
+        list.add 2
+        list.add 3
+
+        list.reverse!
+
+        expect(list.root.content).to eq 3
+        expect(list.root.next.content).to eq 2
+        expect(list.root.next.next.content).to eq 1
+        expect(list.root.next.next.next).to eq nil
+      end
+    end
+
+    context 'when we have 2 nodes' do
+      it 'reverses the order of the list' do
+        list = SinglyLinkedList.new
+        list.add 1
+        list.add 2
+
+        list.reverse!
+
+        expect(list.root.content).to eq 2
+        expect(list.root.next.content).to eq 1
+        expect(list.root.next.next).to eq nil
+      end
+    end
+
+    context 'when we have 1 node' do
+      it 'reverses the order of the list' do
+        list = SinglyLinkedList.new
+        list.add 1
+
+        list.reverse!
+
+        expect(list.root.content).to eq 1
+      end
+    end
+  end
+
 end

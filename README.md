@@ -14,6 +14,7 @@
 - Singly linked list
   - add nodes
   - loop detection O(n) time, O(1) space
+  - reverse the order
 - LRU (last recently used) cache
 - Multiplication every number in an array except the current index
 - Rectangular overlapping
