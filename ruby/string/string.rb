@@ -34,8 +34,7 @@ end
 def reverse_characters! string, start_index, end_index
   while start_index < end_index
     temp_char = string[start_index]
-    string[start_index] = string[end_index]
-    string[end_index] = temp_char
+    string[start_index], string[end_index] = string[end_index], string[start_index]
 
     start_index += 1
     end_index -= 1
