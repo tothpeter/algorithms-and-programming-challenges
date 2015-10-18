@@ -42,3 +42,32 @@ def reverse_characters! string, start_index, end_index
 
   string
 end
+
+# Find Any Palindrome
+def any_palindrome? string
+  parity_map = {}
+
+  (0..string.length - 1).each do |i|
+    char = string[i]
+
+    if parity_map.has_key? char
+      parity_map[char] = !parity_map[char]
+    else
+      parity_map[char] = true
+    end
+  end
+
+  odd_seen = false
+
+  parity_map.values.each do |value|
+    if value
+      if odd_seen
+        return false
+      else
+        odd_seen = true
+      end
+    end
+  end
+
+  return true
+end

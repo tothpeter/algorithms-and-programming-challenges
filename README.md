@@ -22,6 +22,8 @@
 - String related challenges
   - Reverse string in place O(n) time, O(1) space
   - Reverse words in place O(n) time, O(1) space
+  - Any palindrome
+    - Find out if we could build up a palindrome from the given string by permute its letters
 - Trees
   - Binary search tree
     - add nodes
