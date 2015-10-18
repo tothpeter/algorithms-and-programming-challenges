@@ -16,6 +16,7 @@
   - loop detection O(n) time, O(1) space
   - reverse the order in place O(n) time, O(1) space
 - LRU (last recently used) cache
+- Merge ranges challenge
 - Multiplication every number in an array except the current index
 - Rectangular overlapping
 - String related challenges
