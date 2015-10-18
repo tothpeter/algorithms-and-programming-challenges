@@ -9,12 +9,16 @@ class BinarySearchTreeNode
 end
 
 class BinarySearchTree
-  def initialize value
-    @root = BinarySearchTreeNode.new value
+  def initialize
+    @root = nil
   end
 
   def add value
-    add_recursive @root, value
+    if @root
+      add_recursive @root, value
+    else
+      @root = BinarySearchTreeNode.new value
+    end
   end
 
   def find_second_largest
