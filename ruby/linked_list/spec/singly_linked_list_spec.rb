@@ -16,4 +16,26 @@ describe SinglyLinkedList do
       expect(list.root.next.next.content).to eq 3
     end
   end
+
+  describe '#check_loop' do
+    it 'returns true if there is a loop' do
+      list = SinglyLinkedList.new
+      list.add 1
+      list.add 2
+      list.add 3
+
+      list.root.next.next.next = list.root
+
+      expect(list.check_loop).to eq true
+    end
+
+    it 'returns false if there is no loop' do
+      list = SinglyLinkedList.new
+      list.add 1
+      list.add 2
+      list.add 3
+
+      expect(list.check_loop).to eq false
+    end
+  end
 end

@@ -13,6 +13,7 @@
 - Find the highest product of 3 integers in an array
 - Singly linked list
   - add nodes
+  - loop detection O(n) time, O(1) space
 - LRU (last recently used) cache
 - Multiplication every number in an array except the current index
 - Rectangular overlapping

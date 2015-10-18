@@ -13,6 +13,22 @@ class SinglyLinkedList
     end
   end
 
+  def check_loop
+    slow_runner = @root
+    fast_runner = @root
+
+    while fast_runner.next != nil
+      slow_runner = slow_runner.next
+      fast_runner = fast_runner.next.next
+
+      if slow_runner == fast_runner
+        return true
+      end
+    end
+
+    return false
+  end
+
   protected
 
   def insert_at_the_end new_node
