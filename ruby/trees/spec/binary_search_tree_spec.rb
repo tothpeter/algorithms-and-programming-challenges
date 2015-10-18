@@ -6,10 +6,7 @@ describe BinarySearchTree do
     context 'when the 2nd largest is the mostright' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        input = [ 5, 3, 8, 1, 4, 7, 9 ]
-        input.each do |val|
-          bst.add val
-        end
+        bst.add [ 5, 3, 8, 1, 4, 7, 9 ]
 
         expect(bst.find_second_largest).to eq 8
       end
@@ -18,10 +15,7 @@ describe BinarySearchTree do
     context 'when the 2nd largest is in the the mostright children' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        input = [ 5, 3, 8, 1, 4, 7, 12, 10, 9, 11 ]
-        input.each do |val|
-          bst.add val
-        end
+        bst.add  [ 5, 3, 8, 1, 4, 7, 12, 10, 9, 11 ]
 
         expect(bst.find_second_largest).to eq 11
       end
@@ -30,11 +24,8 @@ describe BinarySearchTree do
     context 'when the 2nd largest is the the mostright first child' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        input = [ 5, 3, 8, 1, 4, 7, 12, 10, 9 ]
-        input.each do |val|
-          bst.add val
-        end
-
+        bst.add [ 5, 3, 8, 1, 4, 7, 12, 10, 9 ]
+        
         expect(bst.find_second_largest).to eq 10
       end
     end
@@ -50,8 +41,7 @@ describe BinarySearchTree do
     context 'when we have only 2 nodes' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        bst.add 5
-        bst.add 6
+        bst.add [ 5, 6 ]
         
         expect(bst.find_second_largest).to eq 5
       end
@@ -65,11 +55,8 @@ describe BinarySearchTree do
     context 'when the 2nd largest is the mostright' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        input = [ 5, 3, 8, 1, 4, 7, 9 ]
-        input.each do |val|
-          bst.add val
-        end
-
+        bst.add [ 5, 3, 8, 1, 4, 7, 9 ]
+        
         expect(bst.find_second_largest_enhanced).to eq 8
       end
     end
@@ -77,11 +64,8 @@ describe BinarySearchTree do
     context 'when the 2nd largest is in the the mostright children' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        input = [ 5, 3, 8, 1, 4, 7, 12, 10, 9, 11 ]
-        input.each do |val|
-          bst.add val
-        end
-
+        bst.add [ 5, 3, 8, 1, 4, 7, 12, 10, 9, 11 ]
+        
         expect(bst.find_second_largest_enhanced).to eq 11
       end
     end
@@ -89,10 +73,7 @@ describe BinarySearchTree do
     context 'when the 2nd largest is the the mostright first child' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        input = [ 5, 3, 8, 1, 4, 7, 12, 10, 9 ]
-        input.each do |val|
-          bst.add val
-        end
+        bst.add [ 5, 3, 8, 1, 4, 7, 12, 10, 9 ]
 
         expect(bst.find_second_largest_enhanced).to eq 10
       end
@@ -110,8 +91,7 @@ describe BinarySearchTree do
     context 'when we have only 2 nodes' do
       it 'returns the 2nd largest number from the tree' do
         bst = BinarySearchTree.new
-        bst.add 5
-        bst.add 6
+        bst.add [ 5, 6 ]
         
         expect(bst.find_second_largest_enhanced).to eq 5
       end
@@ -132,13 +112,8 @@ describe BinarySearchTree do
     describe 'when it has many nodes' do
       it 'returns the correct height' do
         bst = BinarySearchTree.new
-        bst.add 5
-        bst.add 10
-        bst.add 4
-        bst.add 7
-        bst.add 11
-        bst.add 8
-        
+        bst.add [ 5, 10, 4, 7, 11, 8 ]
+
         expect(bst.height_recursive).to eq 3
       end
     end
@@ -157,13 +132,8 @@ describe BinarySearchTree do
     describe 'when it has many nodes' do
       it 'returns the correct height' do
         bst = BinarySearchTree.new
-        bst.add 5
-        bst.add 10
-        bst.add 4
-        bst.add 7
-        bst.add 11
-        bst.add 8
-        
+        bst.add [ 5, 10, 4, 7, 11, 8 ]
+
         expect(bst.height_iterative).to eq 3
       end
     end
@@ -183,13 +153,8 @@ describe BinarySearchTree do
     describe 'when it has many nodes' do
       it 'returns the correct width' do
         bst = BinarySearchTree.new
-        bst.add 5
-        bst.add 10
-        bst.add 4
-        bst.add 7
-        bst.add 11
-        bst.add 8
-        
+        bst.add [ 5, 10, 4, 7, 11, 8 ]
+
         expect(bst.width_recursive).to eq 4
       end
     end

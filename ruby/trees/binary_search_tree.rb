@@ -13,11 +13,11 @@ class BinarySearchTree
     @root = nil
   end
 
-  def add value
-    if @root
-      add_recursive @root, value
+  def add input
+    if input.is_a? Array
+      add_from_array input
     else
-      @root = BinarySearchTreeNode.new value
+      add_single input
     end
   end
 
@@ -40,6 +40,7 @@ class BinarySearchTree
   def width_recursive
     height_of_node_recursive(@root.left) + height_of_node_recursive(@root.right)
   end
+
 
   private
 
@@ -72,6 +73,20 @@ class BinarySearchTree
     end
 
     max
+  end
+
+  def add_from_array list
+    list.each do |val|
+      add_single val
+    end
+  end
+
+  def add_single value
+    if @root
+      add_recursive @root, value
+    else
+      @root = BinarySearchTreeNode.new value
+    end
   end
 
   def add_recursive node, value
