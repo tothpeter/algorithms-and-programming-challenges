@@ -159,4 +159,53 @@ describe BinarySearchTree do
       end
     end
   end
+
+
+  # A tree is "superbalanced" if the difference between the depths of any two leaf nodes is no greater than one. 
+  describe '#superbalanced?' do
+    describe 'when it only has right children' do
+      it 'returns false' do
+        bst = BinarySearchTree.new
+        bst.add [ 5, 6, 7]
+        
+        expect(bst.superbalanced?).to eq false
+      end
+    end
+
+    describe 'when it only has left children' do
+      it 'returns false' do
+        bst = BinarySearchTree.new
+        bst.add [ 5, 4, 3]
+        
+        expect(bst.superbalanced?).to eq false
+      end
+    end
+
+    describe 'when it is not super balanced' do
+      it 'returns false' do
+        bst = BinarySearchTree.new
+        bst.add [ 5, 3, 4, 2, 1, 7 ]
+
+        expect(bst.superbalanced?).to eq false
+      end
+    end
+
+    describe 'when it is super balanced' do
+      it 'returns true' do
+        bst = BinarySearchTree.new
+        bst.add [ 5, 3, 4, 2, 7, 6, 8 ]
+
+        expect(bst.superbalanced?).to eq true
+      end
+    end
+
+    describe 'when it is super balanced with only 2 branches' do
+      it 'returns true' do
+        bst = BinarySearchTree.new
+        bst.add [ 5, 3, 2, 1, 6, 7 ]
+
+        expect(bst.superbalanced?).to eq true
+      end
+    end
+  end
 end

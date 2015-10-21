@@ -41,6 +41,48 @@ class BinarySearchTree
     height_of_node_recursive(@root.left) + height_of_node_recursive(@root.right)
   end
 
+  def superbalanced?
+    max_depth = 0
+    min_depth = Float::INFINITY
+    node_tuples = [ [@root, 0] ]
+
+    if @root.right && @root.right.right && @root.left == nil || @root.left && @root.left.left && @root.right == nil
+      return false
+    end
+
+    while node_tuples.length > 0
+      current_tuple = node_tuples.shift
+      current_node = current_tuple[0]
+      current_level = current_tuple[1]
+
+      if current_node.left == nil && current_node.right == nil
+        if current_level > max_depth
+          max_depth = current_level
+        end
+
+        if current_level < min_depth
+          min_depth = current_level
+        end
+
+        if (max_depth - min_depth) > 1
+          return false
+        end
+
+        next
+      end
+      
+      if current_node.left != nil
+        node_tuples << [current_node.left, current_level + 1]
+      end
+
+      if current_node.right != nil
+        node_tuples << [current_node.right, current_level + 1]
+      end
+    end
+
+    return (max_depth - min_depth) <= 1
+  end
+
 
   private
 
