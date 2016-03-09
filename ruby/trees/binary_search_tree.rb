@@ -97,6 +97,16 @@ class BinarySearchTree
     result
   end
 
+  def traversal_postorder node = @root, result = []
+    return if node == nil
+
+    traversal_postorder node.left, result
+    traversal_postorder node.right, result
+    result << node.value
+
+    result
+  end
+
   def self.build_from_preorder preorder_list
     @preorderConstructionIndex = 0
     self.new construct_tree_from_preorder preorder_list, preorder_list[0], FIXNUM_MIN, FIXNUM_MAX

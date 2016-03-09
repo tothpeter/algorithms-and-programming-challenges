@@ -218,6 +218,15 @@ describe BinarySearchTree do
     end
   end
 
+  describe '#traversal_postorder' do
+    it 'returns the node values in postorder' do
+      bst = BinarySearchTree.new
+      bst.add [ 7, 9, 1, 10, 8, 3, 0, 5, 4, 6, 2 ]
+
+      expect(bst.traversal_postorder).to eq [0, 2, 4, 6, 5, 3, 1, 8, 10, 9, 7]
+    end
+  end
+
   describe '.build_from_preorder' do
     it 'returns the right BST' do
       bst = BinarySearchTree.build_from_preorder [12, 9, 5, 4, 7, 10, 15, 13, 19, 16]
