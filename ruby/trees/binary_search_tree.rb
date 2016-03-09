@@ -1,3 +1,7 @@
+FIXNUM_MAX = (2**(0.size * 8 -2) -1)
+FIXNUM_MIN = -(2**(0.size * 8 -2))
+
+
 class BinarySearchTreeNode
   attr_accessor :value, :left, :right
 
@@ -9,8 +13,8 @@ class BinarySearchTreeNode
 end
 
 class BinarySearchTree
-  def initialize
-    @root = nil
+  def initialize root = nil
+    @root = root
   end
 
   def add input
@@ -93,7 +97,33 @@ class BinarySearchTree
     result
   end
 
+  def self.build_from_preorder preorder_list
+    @preorderConstructionIndex = 0
+    self.new construct_tree_from_preorder preorder_list, preorder_list[0], FIXNUM_MIN, FIXNUM_MAX
+  end
+
+
   private
+
+  def self.construct_tree_from_preorder preorder_list, node_value, min, max
+    if @preorderConstructionIndex < preorder_list.length
+      if preorder_list[@preorderConstructionIndex] > min && preorder_list[@preorderConstructionIndex] < max
+        root = BinarySearchTreeNode.new node_value
+        @preorderConstructionIndex += 1
+
+        if @preorderConstructionIndex < preorder_list.length
+          # nodes lies between min and node_value will create left subtree
+          root.left = construct_tree_from_preorder(preorder_list, preorder_list[@preorderConstructionIndex], min, node_value)
+          # nodes lies between node_value and max will create right subtree
+          root.right = construct_tree_from_preorder(preorder_list, preorder_list[@preorderConstructionIndex], node_value, max)
+        end
+
+        return root
+      end
+    end
+
+    return nil
+  end
 
   def height_of_node_recursive node
     if node == nil

@@ -217,4 +217,14 @@ describe BinarySearchTree do
       expect(bst.traversal_preorder).to eq [7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10]
     end
   end
+
+  describe '.build_from_preorder' do
+    it 'returns the right BST' do
+      bst = BinarySearchTree.build_from_preorder [12, 9, 5, 4, 7, 10, 15, 13, 19, 16]
+      expect(bst.traversal_preorder).to eq [12, 9, 5, 4, 7, 10, 15, 13, 19, 16]
+
+      bst = BinarySearchTree.build_from_preorder [7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10]
+      expect(bst.traversal_preorder).to eq [7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10]
+    end
+  end
 end
