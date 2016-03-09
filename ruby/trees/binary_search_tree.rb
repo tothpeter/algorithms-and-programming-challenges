@@ -1,6 +1,6 @@
 class BinarySearchTreeNode
   attr_accessor :value, :left, :right
-  
+
   def initialize value, left = nil, right = nil
     @value = value
     @left = left
@@ -70,7 +70,7 @@ class BinarySearchTree
 
         next
       end
-      
+
       if current_node.left != nil
         node_tuples << [current_node.left, current_level + 1]
       end
@@ -83,6 +83,15 @@ class BinarySearchTree
     return (max_depth - min_depth) <= 1
   end
 
+  def traversal_preorder node = @root, result = []
+    return if node == nil
+
+    result << node.value
+    traversal_preorder node.left, result
+    traversal_preorder node.right, result
+
+    result
+  end
 
   private
 
@@ -102,7 +111,7 @@ class BinarySearchTree
       current_tuple = node_tuples.shift
       current_node = current_tuple[0]
       current_level = current_tuple[1]
-      
+
       if current_node.left != nil
         node_tuples << [current_node.left, current_level + 1]
       end
@@ -168,7 +177,7 @@ class BinarySearchTree
     if node.right
       return find_rightmost node.right
     end
-    
+
     return node.value
   end
 
@@ -199,5 +208,4 @@ class BinarySearchTree
 
     return current_node.value
   end
-
 end
