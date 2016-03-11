@@ -237,6 +237,9 @@ describe BinarySearchTree do
 
       bst = BinarySearchTree.build_from_preorder [20, 10, 5, 1, 7, 15, 30, 25, 35, 32, 40]
       expect(bst.traversal_preorder).to eq [20, 10, 5, 1, 7, 15, 30, 25, 35, 32, 40]
+
+      bst = BinarySearchTree.build_from_preorder [1, 4, 2, 6, 5, 7, 10, 8, 3, 9]
+      expect(bst.traversal_preorder).to eq [1, 4, 2, 6, 5, 7, 10, 8, 3, 9]
     end
   end
 end
