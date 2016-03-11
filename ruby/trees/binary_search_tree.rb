@@ -108,41 +108,42 @@ class BinarySearchTree
   end
 
   def self.build_from_preorder preorder_list
-    @preorderConstructionIndex = 0
-    self.new construct_tree_from_preorder(preorder_list, 0, preorder_list.length - 1, preorder_list.length);
+    @preorder_construction_index = 0
+    @preorder_list = preorder_list
+
+    self.new construct_tree_from_preorder 0, preorder_list.length - 1
   end
 
   private
 
 
-  def self.construct_tree_from_preorder preorder_list, low, high, size
+  def self.construct_tree_from_preorder start_index, end_index
     # Base case
-    if @preorderConstructionIndex >= size || low > high
+    if @preorder_construction_index >= @preorder_list.length || start_index > end_index
       return nil
     end
 
-    # The first node in preorder traversal is root. So take the node at
-    # preorderConstructionIndex from preorder_list[] and make it root, and increment preorderConstructionIndex
-    root = BinarySearchTreeNode.new preorder_list[@preorderConstructionIndex]
-    @preorderConstructionIndex += 1
+    # The first node in preorder traversal is the root node
+    root = BinarySearchTreeNode.new @preorder_list[@preorder_construction_index]
+    @preorder_construction_index += 1
 
     # If the current subarry has only one element, no need to recur
-    if low == high
+    if start_index == end_index
       return root
     end
 
     # Search for the first element greater than root
-    i = 0
-    for i in low..high
-      if preorder_list[i] > root.value
+    greater_than_root_index = 0
+    for greater_than_root_index in start_index..end_index
+      if @preorder_list[greater_than_root_index] > root.value
         break
       end
     end
 
     # Use the index of element found in preorder to divide preorder array in
     # two parts. Left subtree and right subtree
-    root.left = construct_tree_from_preorder preorder_list, @preorderConstructionIndex, i - 1, size
-    root.right = construct_tree_from_preorder preorder_list, i, high, size
+    root.left = construct_tree_from_preorder @preorder_construction_index, greater_than_root_index - 1
+    root.right = construct_tree_from_preorder greater_than_root_index, end_index
 
     return root
   end
@@ -150,16 +151,16 @@ class BinarySearchTree
 
 
   def self.construct_tree_from_preorder_buggy preorder_list, node_value, min, max
-    if @preorderConstructionIndex < preorder_list.length
-      if preorder_list[@preorderConstructionIndex] > min && preorder_list[@preorderConstructionIndex] < max
+    if @preorder_construction_index < preorder_list.length
+      if preorder_list[@preorder_construction_index] > min && preorder_list[@preorder_construction_index] < max
         root = BinarySearchTreeNode.new node_value
-        @preorderConstructionIndex += 1
+        @preorder_construction_index += 1
 
-        if @preorderConstructionIndex < preorder_list.length
+        if @preorder_construction_index < preorder_list.length
           # nodes lies between min and node_value will create left subtree
-          root.left = construct_tree_from_preorder(preorder_list, preorder_list[@preorderConstructionIndex], min, node_value)
+          root.left = construct_tree_from_preorder(preorder_list, preorder_list[@preorder_construction_index], min, node_value)
           # nodes lies between node_value and max will create right subtree
-          root.right = construct_tree_from_preorder(preorder_list, preorder_list[@preorderConstructionIndex], node_value, max)
+          root.right = construct_tree_from_preorder(preorder_list, preorder_list[@preorder_construction_index], node_value, max)
         end
 
         return root
