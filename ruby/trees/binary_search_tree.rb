@@ -144,28 +144,6 @@ class BinarySearchTree
     return root
   end
 
-
-
-  def self.construct_tree_from_preorder_buggy preorder_list, node_value, min, max
-    if @preorder_construction_index < preorder_list.length
-      if preorder_list[@preorder_construction_index] > min && preorder_list[@preorder_construction_index] < max
-        root = BinarySearchTreeNode.new node_value
-        @preorder_construction_index += 1
-
-        if @preorder_construction_index < preorder_list.length
-          # nodes lies between min and node_value will create left subtree
-          root.left = construct_tree_from_preorder(preorder_list, preorder_list[@preorder_construction_index], min, node_value)
-          # nodes lies between node_value and max will create right subtree
-          root.right = construct_tree_from_preorder(preorder_list, preorder_list[@preorder_construction_index], node_value, max)
-        end
-
-        return root
-      end
-    end
-
-    return nil
-  end
-
   def height_of_node_recursive node
     if node == nil
       0
