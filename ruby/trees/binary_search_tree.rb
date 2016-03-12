@@ -108,7 +108,6 @@ class BinarySearchTree
   end
 
   def self.build_from_preorder preorder_list
-    @preorder_construction_index = 0
     @preorder_list = preorder_list
 
     self.new construct_tree_from_preorder 0, preorder_list.length - 1
@@ -119,13 +118,12 @@ class BinarySearchTree
 
   def self.construct_tree_from_preorder start_index, end_index
     # Base case
-    if @preorder_construction_index >= @preorder_list.length || start_index > end_index
+    if start_index > end_index
       return nil
     end
 
     # The first node in preorder traversal is the root node
-    root = BinarySearchTreeNode.new @preorder_list[@preorder_construction_index]
-    @preorder_construction_index += 1
+    root = BinarySearchTreeNode.new @preorder_list[start_index]
 
     # If the current subarry has only one element, no need to recur
     if start_index == end_index
@@ -135,14 +133,12 @@ class BinarySearchTree
     # Search for the first element greater than root
     greater_than_root_index = 0
     for greater_than_root_index in start_index..end_index
-      if @preorder_list[greater_than_root_index] > root.value
-        break
-      end
+      break if @preorder_list[greater_than_root_index] > root.value
     end
 
-    # Use the index of element found in preorder to divide preorder array in
-    # two parts. Left subtree and right subtree
-    root.left = construct_tree_from_preorder @preorder_construction_index, greater_than_root_index - 1
+    # Use the greater_than_root_index found in preorder to divide preorder array in
+    # two parts. Left subtree and right subtree.
+    root.left = construct_tree_from_preorder start_index + 1, greater_than_root_index - 1
     root.right = construct_tree_from_preorder greater_than_root_index, end_index
 
     return root
