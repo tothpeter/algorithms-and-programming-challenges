@@ -2,6 +2,10 @@
 
 ## The implemented algorithms so far
 
+### In JavaScript
+- String related challenges
+  - Minify string
+
 ### In ruby
 - Find the sub array of an array of integers which has the biggest sum
 - Fibonacci
