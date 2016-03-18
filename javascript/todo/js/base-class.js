@@ -16,8 +16,12 @@ var Base = (function() {
 
       init: function () {},
 
-      setState: function (state) {
+      setState: function (state, silently) {
         this.state = state;
+
+        if (silently !== true) {
+          this.render();
+        }
 
         return this;
       },
@@ -25,10 +29,26 @@ var Base = (function() {
       getState: function () {
         return this.state;
       }
-    }
+    };
 
     for (var prop in params) {
       baseClass.prototype[prop] = params[prop];
+    }
+
+    // Rendering
+
+    baseClass.prototype._render = params.render;
+
+    baseClass.prototype.render = function() {
+      var $newEl = this._render();
+
+      if (this.$el) {
+        this.$el.parentNode.replaceChild($newEl, this.$el);
+      }
+
+      this.$el = $newEl;
+
+      return this.$el;
     }
 
     return baseClass;

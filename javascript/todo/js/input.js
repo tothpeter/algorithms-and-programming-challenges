@@ -8,7 +8,7 @@ var Input = Base.extend({
   _onInput: function(event) {
     this.setState({
       value: event.target.value
-    });
+    }, true);
   },
 
   _onKeypress: function(event) {
