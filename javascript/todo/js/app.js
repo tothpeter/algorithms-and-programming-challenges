@@ -1,6 +1,6 @@
 var App = Base.extend({
   init: function(state) {
-    this.state = state || {input: {}};
+    this.state = state || {input: {value: ''}};
 
     this.input = new Input(this.state.input);
     this.input.onReturnPressed(function(event) {
