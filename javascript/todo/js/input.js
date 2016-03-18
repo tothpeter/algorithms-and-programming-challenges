@@ -1,6 +1,10 @@
 'use strict';
 
 var Input = Base.extend({
+  init: function(state) {
+    this.state = state || { value: '' };
+  },
+
   _onInput: function(event) {
     this.setState({
       value: event.target.value
