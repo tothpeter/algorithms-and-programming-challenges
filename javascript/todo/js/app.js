@@ -14,6 +14,7 @@ var App = Base.extend({
   _addItem: function(todoTitle) {
     var newTodoItem = new TodoItem({title: todoTitle});
     this.list.addItem(newTodoItem);
+    this.input.setState({value: ''}).focus();
   },
 
   render: function() {

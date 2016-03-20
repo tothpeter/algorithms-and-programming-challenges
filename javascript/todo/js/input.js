@@ -24,6 +24,10 @@ var Input = Base.extend({
     return this;
   },
 
+  focus: function() {
+    this.$el.focus();
+  },
+
   render: function() {
     var $el = document.createElement('input');
     $el.autofocus = true;
