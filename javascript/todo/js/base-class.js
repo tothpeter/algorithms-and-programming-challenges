@@ -19,7 +19,7 @@ var Base = (function() {
       setState: function (state, silently) {
         this.state = state;
 
-        if (silently !== true) {
+        if (silently !== true && typeof baseClass.prototype._render === 'function') {
           this.render();
         }
 
