@@ -28,6 +28,10 @@ var Base = (function() {
 
       getState: function () {
         return this.state;
+      },
+
+      destroy() {
+        this.$el.remove();
       }
     };
 

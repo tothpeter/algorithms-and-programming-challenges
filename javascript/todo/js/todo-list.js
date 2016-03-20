@@ -12,20 +12,30 @@ var TodoList = Base.extend({
     this.setState(newState);
   },
 
-  removeItem: function(item) {
+  removeItem: function(itemToRemove) {
     var newState = this.state,
-        indexToRemove = this.state.items.indexOf(item);
+        indexToRemove = this.state.items.indexOf(itemToRemove);
 
     newState.items.splice(indexToRemove, 1);
+    itemToRemove.destroy();
 
-    this.setState(newState);
+    this.setState(newState, true);
   },
 
   render: function() {
-    var $el = document.createElement('ul');
+    var $el = document.createElement('ul'),
+        _this = this;
 
     this.state.items.forEach(function(item) {
       $el.appendChild(item.render());
+    });
+
+    $el.addEventListener('click', function(e) {
+      if (e.target && e.target.matches('.btn-delete')) {
+        if (confirm('Are you sure?')) {
+          _this.removeItem(e.target.todoItem);
+        }
+      }
     });
 
     return $el;
