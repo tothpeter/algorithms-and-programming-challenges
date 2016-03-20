@@ -30,6 +30,20 @@ var Base = (function() {
         return this.state;
       },
 
+      set: function(property, value, silently) {
+        this.state[property] = value;
+
+        if (silently !== true && typeof baseClass.prototype._render === 'function') {
+          this.render();
+        }
+
+        return this;
+      },
+
+      get: function(property) {
+        return this.state[property];
+      },
+
       destroy() {
         this.$el.remove();
       }
