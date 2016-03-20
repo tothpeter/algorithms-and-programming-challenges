@@ -14,6 +14,7 @@ var TodoItem = Base.extend({
     $el.className = 'todo-item';
 
     $label.innerText = this.state.title;
+    $label.className = 'todo-item-label';
 
     $btnDelete.innerText = 'X';
     $btnDelete.className = 'btn-delete';
@@ -23,6 +24,7 @@ var TodoItem = Base.extend({
     $checkbox.todoItem = this;
 
     if (this.state.done) {
+      $el.className += ' todo-item-done';
       $checkbox.className += ' checked';
     }
 

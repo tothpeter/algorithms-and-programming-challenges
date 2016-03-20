@@ -12,3 +12,8 @@
 .todo-item .checkbox.checked {
   background-color: #000;
 }
+
+.todo-item-done .todo-item-label{
+  font-style: italic;
+  text-decoration: line-through;
+}
