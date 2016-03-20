@@ -7,15 +7,28 @@ var TodoItem = Base.extend({
 
   render: function() {
     var $el = document.createElement('li'),
-        $btnDelete = document.createElement('span');
+        $btnDelete = document.createElement('span'),
+        $checkbox = document.createElement('span'),
+        $label = document.createElement('span');
 
-    $el.innerText = this.state.title;
+    $el.className = 'todo-item';
+
+    $label.innerText = this.state.title;
 
     $btnDelete.innerText = 'X';
     $btnDelete.className = 'btn-delete';
     $btnDelete.todoItem = this;
 
+    $checkbox.className = 'checkbox';
+    $checkbox.todoItem = this;
+
+    if (this.state.done) {
+      $checkbox.className += ' checked';
+    }
+
     $el.appendChild($btnDelete);
+    $el.appendChild($checkbox);
+    $el.appendChild($label);
 
     return $el;
   }

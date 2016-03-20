@@ -1,0 +1,14 @@
+.todo-item .checkbox {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  margin-left: 4px;
+  background-color: gray;
+  border: 2px solid #000;
+}
+
+
+.todo-item .checkbox.checked {
+  background-color: #000;
+}

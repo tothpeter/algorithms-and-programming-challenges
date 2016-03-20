@@ -33,8 +33,13 @@ var TodoList = Base.extend({
     $el.addEventListener('click', function(e) {
       if (e.target && e.target.matches('.btn-delete')) {
         if (confirm('Are you sure?')) {
-          _this.removeItem(e.target.todoItem);
+          return _this.removeItem(e.target.todoItem);
         }
+      }
+
+      if (e.target && e.target.matches('.checkbox')) {
+        var todoItem = e.target.todoItem;
+        return todoItem.set('done', !todoItem.get('done'));
       }
     });
 
