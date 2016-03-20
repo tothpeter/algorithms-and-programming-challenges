@@ -6,10 +6,8 @@ var TodoList = Base.extend({
   },
 
   addItem: function(item) {
-    var newState = this.state;
-    newState.items.push(item);
-
-    this.setState(newState);
+    this.state.items.unshift(item);
+    this.setState(this.state);
   },
 
   removeItem: function(itemToRemove) {
