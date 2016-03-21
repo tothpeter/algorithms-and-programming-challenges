@@ -20,6 +20,18 @@ var TodoList = Base.extend({
     this.setState(newState, true);
   },
 
+  setItems: function(items) {
+    var newItems = [];
+
+    items.forEach(function(item) {
+      newItems.push(new TodoItem(item));
+    });
+
+    this.set('items', newItems, true);
+
+    return this;
+  },
+
   render: function() {
     var $el = document.createElement('ul'),
         _this = this;

@@ -1,14 +1,17 @@
 var App = Base.extend({
-  init: function(state) {
-    this.state = state || {input: {value: ''}};
+  init: function(params) {
     var app = this;
 
-    this.input = new Input(this.state.input);
+    this.input = new Input();
     this.input.onReturnPressed(function(event) {
       app._addItem(this.state.value);
     });
 
     this.list = new TodoList();
+
+    if (params.items && params.items.length > 0) {
+      this.list.setItems(params.items);
+    }
   },
 
   _addItem: function(todoTitle) {
