@@ -19,9 +19,7 @@ var Base = (function() {
       setState: function (state, silently) {
         this.state = state;
 
-        if (silently !== true && typeof baseClass.prototype._render === 'function') {
-          this.render();
-        }
+        this._update(silently);
 
         return this;
       },
@@ -33,11 +31,7 @@ var Base = (function() {
       set: function(property, value, silently) {
         this.state[property] = value;
 
-        if (silently !== true && typeof baseClass.prototype._render === 'function') {
-          this.render();
-        }
-
-        return this;
+        this._update(silently);
       },
 
       get: function(property) {
@@ -46,6 +40,12 @@ var Base = (function() {
 
       destroy() {
         this.$el.remove();
+      },
+
+      _update(silently) {
+        if (silently !== true && typeof baseClass.prototype._render === 'function') {
+          this.render();
+        }
       }
     };
 
