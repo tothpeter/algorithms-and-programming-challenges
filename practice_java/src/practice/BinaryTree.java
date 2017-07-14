@@ -10,11 +10,7 @@ public class BinaryTree {
 	}
 	
 	public void addItem(int value) {
-		if (root == null) {
-			root = new BinaryTreeNode(value);
-		} else {
-			addItem(root, value);
-		}
+		root = addItemRecursive(root, value);
 	}
 	
 	public void addItem(int[] values) {
@@ -23,23 +19,21 @@ public class BinaryTree {
 		}
 	}
 	
-	private void addItem(BinaryTreeNode node, int value) {		
+	private BinaryTreeNode addItemRecursive(BinaryTreeNode node, int value) {
+		if (node == null) {
+			return new BinaryTreeNode(value);
+		}
+
 		if (node.value == value) {
-			return;
+			return node;
 		}
 
 		if (node.value > value) {
-			if (node.left == null) {
-				node.left = node.insertLeft(value);
-			} else {
-				addItem(node.left, value);
-			}
+			node.left = addItemRecursive(node.left, value);
 		} else {
-			if (node.right == null) {
-				node.right = node.insertRight(value);
-			} else {
-				addItem(node.right, value);
-			}
+			node.right = addItemRecursive(node.right, value);
 		}
+		
+		return node;
 	}
 }
