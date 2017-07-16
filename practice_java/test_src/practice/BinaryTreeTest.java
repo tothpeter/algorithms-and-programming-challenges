@@ -2,7 +2,6 @@ package practice;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class BinaryTreeTest {
 		
 		binaryTree.addItem(input);
 		
-		ArrayList<Integer> output = binaryTree.getPreOrderList();
+		List<Integer> output = binaryTree.getPreOrderList();
 		
 		assertEquals(expectedOutput, output);
 	}
@@ -45,7 +44,7 @@ public class BinaryTreeTest {
 		
 		binaryTree.addItem(input);
 		
-		ArrayList<Integer> output = binaryTree.getInOrderList();
+		List<Integer> output = binaryTree.getInOrderList();
 		
 		assertEquals(expectedOutput, output);
 	}
@@ -59,7 +58,7 @@ public class BinaryTreeTest {
 		
 		binaryTree.addItem(input);
 		
-		ArrayList<Integer> output = binaryTree.getPostOrderList();
+		List<Integer> output = binaryTree.getPostOrderList();
 		
 		assertEquals(expectedOutput, output);
 	}
