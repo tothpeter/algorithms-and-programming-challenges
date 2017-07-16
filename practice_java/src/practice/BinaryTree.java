@@ -113,4 +113,28 @@ public class BinaryTree {
 
 		return node;
 	}
+	
+	
+	// Min And Max Depth Levels Recursive
+	public int[] getMinAndMaxDepthLevelsRecursive() {
+		int[] minAndMaxDepthLevels = { Integer.MAX_VALUE, -1 }; 
+		
+		getMinAndMaxDepthLevelsRecursive(root, 0, minAndMaxDepthLevels);
+		
+		return minAndMaxDepthLevels;
+	}
+	
+	public void getMinAndMaxDepthLevelsRecursive(BinaryTreeNode node, int currentDepthLevel, int[] minAndMaxDepthLevels) {
+		if (node == null) {
+			return;
+		}
+		
+		if (node.left == null && node.right == null) {
+			minAndMaxDepthLevels[0] = Math.min(minAndMaxDepthLevels[0], currentDepthLevel);
+			minAndMaxDepthLevels[1] = Math.max(minAndMaxDepthLevels[1], currentDepthLevel);
+		} else {
+			getMinAndMaxDepthLevelsRecursive(node.left, currentDepthLevel + 1, minAndMaxDepthLevels);
+			getMinAndMaxDepthLevelsRecursive(node.right, currentDepthLevel + 1, minAndMaxDepthLevels);
+		}
+	}
 }

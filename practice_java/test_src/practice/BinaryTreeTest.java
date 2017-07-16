@@ -76,4 +76,52 @@ public class BinaryTreeTest {
 		
 		assertEquals(expectedOutput, output);
 	}
+	
+	
+	// Min And Max Depth Levels Recursive
+	@Test
+	public void testGetMinAndMaxDepthLevelsRecursive() {
+		BinaryTree binaryTree = new BinaryTree();
+
+		int[] input = { 5, 3, 4, 2, 7, 6, 8 };
+		binaryTree.addItem(input);
+		
+		int[] expectedMinAndMaxDepthLevels = { 2, 2 }; 
+		int[] resultMinAndMaxDepthLevels = { 9, 0 };
+		
+		binaryTree.getMinAndMaxDepthLevelsRecursive(binaryTree.getRoot(), 0, resultMinAndMaxDepthLevels);
+
+		assertEquals(Arrays.toString(expectedMinAndMaxDepthLevels), Arrays.toString(resultMinAndMaxDepthLevels));		
+	}
+	
+	@Test
+	public void testGetMinAndMaxDepthLevelsRecursiverWithDifferentTree() {
+		BinaryTree binaryTree = new BinaryTree();
+
+		int[] input = { 5, 3, 4, 2, 7 };
+		binaryTree.addItem(input);
+		
+		int[] expectedMinAndMaxDepthLevels = { 1, 2 }; 
+		int[] resultMinAndMaxDepthLevels = { 9, 0 };
+		
+		binaryTree.getMinAndMaxDepthLevelsRecursive(binaryTree.getRoot(), 0, resultMinAndMaxDepthLevels);
+
+		assertEquals(Arrays.toString(expectedMinAndMaxDepthLevels), Arrays.toString(resultMinAndMaxDepthLevels));		
+	}
+	
+	
+	@Test
+	public void testGetMinAndMaxDepthLevelsRecursiveWhenOnlyLeftNodesExist() {
+		BinaryTree binaryTree = new BinaryTree();
+
+		int[] input = { 5, 3, 2 };
+		binaryTree.addItem(input);
+		
+		int[] expectedMinAndMaxDepthLevels = { 2, 2 }; 
+		int[] resultMinAndMaxDepthLevels = { 9, 0 };
+		
+		binaryTree.getMinAndMaxDepthLevelsRecursive(binaryTree.getRoot(), 0, resultMinAndMaxDepthLevels);
+
+		assertEquals(Arrays.toString(expectedMinAndMaxDepthLevels), Arrays.toString(resultMinAndMaxDepthLevels));		
+	}
 }
