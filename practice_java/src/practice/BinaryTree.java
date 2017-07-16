@@ -87,4 +87,30 @@ public class BinaryTree {
 		
 		return list;
 	}
+	
+	//	construct tree
+	public void buildFromPreOrderList(int[] preOrderList) {
+		root = buildFromPreOrderList(preOrderList, 0, preOrderList.length - 1);
+	}
+	
+	private BinaryTreeNode buildFromPreOrderList(int[] preOrderList, int startIndex, int endIndex) {
+		if (startIndex > endIndex) {
+			return null;
+		}
+
+		BinaryTreeNode node = new BinaryTreeNode(preOrderList[startIndex]);
+		
+		if (startIndex == endIndex) {
+			return node;
+		}
+		
+		int greaterThanRootIndex = startIndex + 1;
+		
+		for (; preOrderList[greaterThanRootIndex] < preOrderList[startIndex] && greaterThanRootIndex <= endIndex; greaterThanRootIndex++) {}
+		
+		node.left = buildFromPreOrderList(preOrderList, startIndex + 1, greaterThanRootIndex - 1);
+		node.right = buildFromPreOrderList(preOrderList, greaterThanRootIndex, endIndex);
+
+		return node;
+	}
 }

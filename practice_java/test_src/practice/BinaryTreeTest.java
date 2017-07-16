@@ -62,4 +62,18 @@ public class BinaryTreeTest {
 		
 		assertEquals(expectedOutput, output);
 	}
+	
+	@Test
+	public void testBuildFromPreOrderList() {
+		BinaryTree binaryTree = new BinaryTree();
+
+		int[] input = { 7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10 };
+		List<Integer> expectedOutput = Arrays.asList( 7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10 );
+		
+		binaryTree.buildFromPreOrderList(input);
+		
+		List<Integer> output = binaryTree.getPreOrderList();
+		
+		assertEquals(expectedOutput, output);
+	}
 }
