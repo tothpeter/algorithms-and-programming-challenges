@@ -9,30 +9,30 @@ public class P08BalancedBinaryTreeTest {
 	// A tree is "superbalanced" if the difference between the depths of any two leaf nodes ↴ is no greater than one.
 	@Test
 	public void testIsSuperbalancedIterativeForFalseCase() {
-		P08BalancedBinaryTree binaryTree = new P08BalancedBinaryTree();
+		P08BalancedBinaryTree bst = new P08BalancedBinaryTree();
 
 		int[] input = { 5, 3, 4, 2, 1, 6 };
-		binaryTree.addItem(input);
+		bst.addItem(input);
 
-		assertEquals(false, binaryTree.isSuperbalancedIterative());
+		assertEquals(false, bst.isSuperbalancedIterative());
 	}
 	
 	public void testIsSuperbalancedIterativeForFalseCaseWhenItHasOnlyTwoLeaves() {
-		P08BalancedBinaryTree binaryTree = new P08BalancedBinaryTree();
+		P08BalancedBinaryTree bst = new P08BalancedBinaryTree();
 
 		int[] input = { 5, 3, 2, 1, 6 };
-		binaryTree.addItem(input);
+		bst.addItem(input);
 
-		assertEquals(false, binaryTree.isSuperbalancedIterative());
+		assertEquals(false, bst.isSuperbalancedIterative());
 	}
 	
 	@Test
 	public void testIsSuperbalancedIterativeForTrueCase() {
-		P08BalancedBinaryTree binaryTree = new P08BalancedBinaryTree();
+		P08BalancedBinaryTree bst = new P08BalancedBinaryTree();
 
 		int[] input = { 5, 3, 4, 2, 7, 6, 8 };
-		binaryTree.addItem(input);
+		bst.addItem(input);
 
-		assertEquals(true, binaryTree.isSuperbalancedIterative());
+		assertEquals(true, bst.isSuperbalancedIterative());
 	}
 }

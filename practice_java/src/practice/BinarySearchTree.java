@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import practice.BinaryTreeNode;
 
-public class BinaryTree {
-	private BinaryTreeNode root;
+public class BinarySearchTree {
+	protected BinaryTreeNode root;
 	
 	public BinaryTreeNode getRoot() {
 		return root;

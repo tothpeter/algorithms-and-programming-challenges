@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import practice.BinaryTree;
+import practice.BinarySearchTree;
 import practice.BinaryTreeNode;
 
-public class P08BalancedBinaryTree extends BinaryTree {
+public class P08BalancedBinaryTree extends BinarySearchTree {
 	// A tree is "superbalanced" if the difference between the depths of any two leaf nodes ↴ is no greater than one.
 	public boolean isSuperbalancedIterative() {
 		if (root == null) {
