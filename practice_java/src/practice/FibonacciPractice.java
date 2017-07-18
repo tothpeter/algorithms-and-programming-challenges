@@ -2,7 +2,11 @@ package practice;
 
 public class FibonacciPractice {
 	public static int getNthFibonacciRecursive(int n) {
-		return n <= 2 ? n - 1 : getNthFibonacciRecursive(n - 1) + getNthFibonacciRecursive(n - 2); 
+		if (n <= 2) {
+			return n - 1;
+		}
+		
+		return getNthFibonacciRecursive(n - 1) + getNthFibonacciRecursive(n - 2); 
 	}
 	
 	public static int getNthFibonacciIterative(int n) {
