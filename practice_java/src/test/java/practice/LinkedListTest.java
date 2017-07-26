@@ -25,7 +25,7 @@ public class LinkedListTest {{
 	});
 	
 	describe("#contains", () -> {
-		it("returns false when the list is emptu", () -> {
+		it("returns false when the list is empty", () -> {
 			LinkedList list = new LinkedList();
 
 			assertThat(list.contains("a")).isEqualTo(false);
@@ -47,6 +47,35 @@ public class LinkedListTest {{
 			list.add("b");
 
 			assertThat(list.contains("c")).isEqualTo(false);
+		});
+	});
+	
+	describe("#remove", () -> {
+		it("returns null when the list is empty", () -> {
+			LinkedList list = new LinkedList();
+
+			assertThat(list.remove("a")).isEqualTo(null);
+		});
+		
+		it("removes the required item and returns its value", () -> {
+			LinkedList list = new LinkedList();
+
+			list.add("a");
+			list.add("b");
+			list.add("c");
+
+			assertThat(list.remove("b")).isEqualTo("b");
+			assertThat(list.getHead().value).isEqualTo("a");
+			assertThat(list.getHead().next.value).isEqualTo("c");
+		});
+		
+		it("returns null when the required item is not in the list", () -> {
+			LinkedList list = new LinkedList();
+
+			list.add("a");
+			list.add("b");
+
+			assertThat(list.remove("c")).isEqualTo(null);
 		});
 	});
 }}

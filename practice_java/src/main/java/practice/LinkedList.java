@@ -45,6 +45,25 @@ public class LinkedList {
 		return false;
 	}
 	
+	public String remove(String str) {
+		if (head == null) {
+			return null;
+		}
+		
+		LinkedListNode currentNode = head;
+		
+		while (currentNode.next != null) {
+			if (currentNode.next.value.equals(str)) {
+				currentNode.next = currentNode.next.next;
+				return str;
+			}
+
+			currentNode = currentNode.next;
+		}		
+
+		return null;
+	}
+	
 	public LinkedListNode getHead() {
 		return head;
 	}
