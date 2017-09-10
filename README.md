@@ -2,6 +2,27 @@
 
 ## The implemented algorithms so far
 
+### In Java
+- LRU (last recently used) cache
+- Trees
+  - Binary search tree
+    - add nodes
+    - find the second largest value
+    - construction from given preorder list
+    - traversals: preorder, inorder, postorder
+- String related challenges
+  - Reverse string in place O(n) time, O(1) space
+- Fibonacci
+  - iterative
+  - recursive
+  - recursive with memoize
+- Classic fizz buzz
+- Singly linked list
+  - add nodes
+  - loop detection O(n) time, O(1) space
+  - reverse the order in place O(n) time, O(1) space
+- Other challenging tasks from Interview cake
+
 ### In JavaScript
 - String related challenges
   - Minify string
