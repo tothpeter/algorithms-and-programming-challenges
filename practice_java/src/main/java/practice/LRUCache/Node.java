@@ -1,36 +1,36 @@
 package practice.LRUCache;
 
-public class Node {
+public class Node<ValueType> {
 	private String key;
-	private int value;
-	private Node pre, next;
+	private ValueType value;
+	private Node<ValueType> pre, next;
 	
-	public Node(String key, int value) {
+	public Node(String key, ValueType value) {
 		this.key = key;
 		this.value = value;
 	}
 	
-	public int getValue() {
+	public ValueType getValue() {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(ValueType value) {
 		this.value = value;
 	}
 
-	public Node getPre() {
+	public Node<ValueType> getPre() {
 		return pre;
 	}
 
-	public void setPre(Node pre) {
+	public void setPre(Node<ValueType> pre) {
 		this.pre = pre;
 	}
 
-	public Node getNext() {
+	public Node<ValueType> getNext() {
 		return next;
 	}
 
-	public void setNext(Node next) {
+	public void setNext(Node<ValueType> next) {
 		this.next = next;
 	}
 

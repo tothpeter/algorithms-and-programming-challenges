@@ -1,34 +1,32 @@
 package practice.LRUCache;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LRUCache {
+public class LRUCache<ValueType> {
 	private int maxSize, currentSize = 0;
-	private Node mostRecentlyUsed, leastRecentlyUsed;
+	private Node<ValueType> mostRecentlyUsed, leastRecentlyUsed;
 
-	private HashMap<String, Node> cache = new HashMap<>();
+	private HashMap<String, Node<ValueType>> cache = new HashMap<>();
 
 	public LRUCache(int maxSize) {
 		this.maxSize = maxSize;
 	}
 	
-	public int[] getItems() {
-		Node currentNode = mostRecentlyUsed;
-		
-		int[] result = new int[currentSize];
-		int i = 0;
+	public ArrayList<ValueType> getItems() {
+		Node<ValueType> currentNode = mostRecentlyUsed;
+		ArrayList<ValueType> result = new ArrayList<ValueType>();
 		
 		while (currentNode != null) {
-			result[i] = currentNode.getValue();
+			result.add(currentNode.getValue());
 			currentNode = currentNode.getNext();
-			i++;
 		}
 		
 		return result;
 	}
 	
-	public void put(int item, String key) {
-		Node newNode = new Node(key, item);
+	public void put(ValueType item, String key) {
+		Node<ValueType> newNode = new Node<ValueType>(key, item);
 		
 		if (mostRecentlyUsed == null) {
 			leastRecentlyUsed = newNode;
@@ -48,8 +46,8 @@ public class LRUCache {
 		}
 	}
 	
-	public Object get(String key) {
-		Node tmpNode = cache.get(key);
+	public ValueType get(String key) {
+		Node<ValueType> tmpNode = cache.get(key);
 
 		if (tmpNode == null) {
 			return null;
@@ -62,7 +60,7 @@ public class LRUCache {
 		return tmpNode.getValue();
 	}
 	
-	private void makeItemMostRecentlyUsed(Node item) {
+	private void makeItemMostRecentlyUsed(Node<ValueType> item) {
 		// Un chain
 		if (item.getPre() != null) {
 			item.getPre().setNext(item.getNext());			
