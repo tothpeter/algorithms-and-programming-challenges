@@ -19,9 +19,9 @@ public class LRUCacheTest {{
 				
 				LRUCache<Integer> cache = new LRUCache<Integer>(5);
 
-				cache.put(3, "Key for 3");
-				cache.put(2, "Key for 2");
-				cache.put(1, "Key for 1");
+				cache.put("Key for 3", 3);
+				cache.put("Key for 2", 2);
+				cache.put("Key for 1", 1);
 				
 				ArrayList<Integer> result = cache.getItems();
 				
@@ -35,9 +35,9 @@ public class LRUCacheTest {{
 				
 				LRUCache<Integer> cache = new LRUCache<Integer>(2);
 
-				cache.put(3, "Key for 3");
-				cache.put(2, "Key for 2");
-				cache.put(1, "Key for 1");
+				cache.put("Key for 3", 3);
+				cache.put("Key for 2", 2);
+				cache.put("Key for 1", 1);
 				
 				ArrayList<Integer> result = cache.getItems();
 				
@@ -52,9 +52,9 @@ public class LRUCacheTest {{
 				
 				LRUCache<Integer> cache = new LRUCache<Integer>(3);
 
-				cache.put(3, "same_key");
-				cache.put(2, "Key for 2");
-				cache.put(1, "same_key");
+				cache.put("same_key", 3);
+				cache.put("Key for 2", 2);
+				cache.put("same_key", 1);
 				
 				ArrayList<Integer> result = cache.getItems();
 				
@@ -67,8 +67,8 @@ public class LRUCacheTest {{
 		it("returns the requested item", () -> {
 			LRUCache<Integer> cache = new LRUCache<Integer>(3);
 
-			cache.put(3, "Key for 3");
-			cache.put(2, "Key for 2");
+			cache.put("Key for 3", 3);
+			cache.put("Key for 2", 2);
 			
 			int requestedItem = cache.get("Key for 3");
 
@@ -81,9 +81,9 @@ public class LRUCacheTest {{
 				
 				LRUCache<Integer> cache = new LRUCache<Integer>(3);
 	
-				cache.put(3, "Key for 3");
-				cache.put(2, "Key for 2");
-				cache.put(1, "Key for 1");
+				cache.put("Key for 3", 3);
+				cache.put("Key for 2", 2);
+				cache.put("Key for 1", 1);
 				
 				cache.get("Key for 2");
 				
@@ -99,9 +99,9 @@ public class LRUCacheTest {{
 				
 				LRUCache<Integer> cache = new LRUCache<Integer>(3);
 	
-				cache.put(3, "Key for 3");
-				cache.put(2, "Key for 2");
-				cache.put(1, "Key for 1");
+				cache.put("Key for 3", 3);
+				cache.put("Key for 2", 2);
+				cache.put("Key for 1", 1);
 				
 				cache.get("Key for 3");
 				
@@ -117,9 +117,9 @@ public class LRUCacheTest {{
 				
 				LRUCache<Integer> cache = new LRUCache<Integer>(3);
 	
-				cache.put(3, "Key for 3");
-				cache.put(2, "Key for 2");
-				cache.put(1, "Key for 1");
+				cache.put("Key for 3", 3);
+				cache.put("Key for 2", 2);
+				cache.put("Key for 1", 1);
 				
 				cache.get("Key for 1");
 				
