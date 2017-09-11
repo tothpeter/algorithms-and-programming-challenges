@@ -26,6 +26,22 @@ public class LRUCache<ValueType> {
 	}
 	
 	public void put(ValueType item, String key) {
+		if (cache.containsKey(key)) {
+			updateExistingItem(item, key);
+		} else {
+			putNewItem(item, key);
+		}
+	}
+	
+	private void updateExistingItem(ValueType item, String key) {
+		Node<ValueType> existingItem = cache.get(key);
+		
+		existingItem.setValue(item);
+
+		makeItemMostRecentlyUsed(existingItem);
+	}
+	
+	private void putNewItem(ValueType item, String key) {
 		Node<ValueType> newNode = new Node<ValueType>(key, item);
 		
 		if (mostRecentlyUsed == null) {

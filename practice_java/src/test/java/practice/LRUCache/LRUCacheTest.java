@@ -45,6 +45,22 @@ public class LRUCacheTest {{
 				assertEquals(null, cache.get("Key for 3"));
 			});
 		});
+		
+		describe("When use an existing key but a different value", () -> {
+			it("updates the value of the existing key and makes it the most recently used", () -> {
+				ArrayList<Integer> expectedOrder = new ArrayList<Integer>(Arrays.asList(1, 2));
+				
+				LRUCache<Integer> cache = new LRUCache<Integer>(3);
+
+				cache.put(3, "same_key");
+				cache.put(2, "Key for 2");
+				cache.put(1, "same_key");
+				
+				ArrayList<Integer> result = cache.getItems();
+				
+				assertEquals(expectedOrder, result);
+			});
+		});
 	});
 		
 	describe(".get", () -> {
