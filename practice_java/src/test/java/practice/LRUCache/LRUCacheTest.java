@@ -48,6 +48,17 @@ public class LRUCacheTest {{
 	});
 		
 	describe(".get", () -> {
+		it("returns the requested item", () -> {
+			LRUCache<Integer> cache = new LRUCache<Integer>(3);
+
+			cache.put(3, "Key for 3");
+			cache.put(2, "Key for 2");
+			
+			int requestedItem = cache.get("Key for 3");
+
+			assertEquals(3, requestedItem);
+		});
+		
 		describe("When we get an item from the middle", () -> {
 			it("makes the requested item the most recently used", () -> {
 				ArrayList<Integer> expectedOrder = new ArrayList<Integer>(Arrays.asList(2, 1, 3));
@@ -58,11 +69,7 @@ public class LRUCacheTest {{
 				cache.put(2, "Key for 2");
 				cache.put(1, "Key for 1");
 				
-				int gotItem = (int)cache.get("Key for 2");
-				
-				assertEquals(2, gotItem);
-				
-				assertEquals(null, cache.get("not existing key"));
+				cache.get("Key for 2");
 				
 				ArrayList<Integer> result = cache.getItems();
 				
@@ -80,9 +87,7 @@ public class LRUCacheTest {{
 				cache.put(2, "Key for 2");
 				cache.put(1, "Key for 1");
 				
-				int gotItem = (int)cache.get("Key for 3");
-				
-				assertEquals(3, gotItem);
+				cache.get("Key for 3");
 				
 				ArrayList<Integer> result = cache.getItems();
 				
@@ -100,9 +105,7 @@ public class LRUCacheTest {{
 				cache.put(2, "Key for 2");
 				cache.put(1, "Key for 1");
 				
-				int gotItem = (int)cache.get("Key for 1");
-				
-				assertEquals(1, gotItem);
+				cache.get("Key for 1");
 				
 				ArrayList<Integer> result = cache.getItems();
 				
