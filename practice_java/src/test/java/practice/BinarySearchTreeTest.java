@@ -127,9 +127,7 @@ public class BinarySearchTreeTest {{
 				bst.addItem(input);
 				
 				int[] expectedMinAndMaxDepthLevels = { 2, 2 }; 
-				int[] resultMinAndMaxDepthLevels = { 9, 0 };
-				
-				bst.getMinAndMaxDepthLevelsRecursive(bst.getRoot(), 0, resultMinAndMaxDepthLevels);
+				int[] resultMinAndMaxDepthLevels = bst.getMinAndMaxDepthLevelsRecursive();
 
 				assertEquals(Arrays.toString(expectedMinAndMaxDepthLevels), Arrays.toString(resultMinAndMaxDepthLevels));
 			});
@@ -143,9 +141,7 @@ public class BinarySearchTreeTest {{
 				bst.addItem(input);
 				
 				int[] expectedMinAndMaxDepthLevels = { 1, 2 }; 
-				int[] resultMinAndMaxDepthLevels = { 9, 0 };
-				
-				bst.getMinAndMaxDepthLevelsRecursive(bst.getRoot(), 0, resultMinAndMaxDepthLevels);
+				int[] resultMinAndMaxDepthLevels = bst.getMinAndMaxDepthLevelsRecursive();
 
 				assertEquals(Arrays.toString(expectedMinAndMaxDepthLevels), Arrays.toString(resultMinAndMaxDepthLevels));		
 			});
@@ -159,9 +155,7 @@ public class BinarySearchTreeTest {{
 				bst.addItem(input);
 				
 				int[] expectedMinAndMaxDepthLevels = { 2, 2 }; 
-				int[] resultMinAndMaxDepthLevels = { 9, 0 };
-				
-				bst.getMinAndMaxDepthLevelsRecursive(bst.getRoot(), 0, resultMinAndMaxDepthLevels);
+				int[] resultMinAndMaxDepthLevels = bst.getMinAndMaxDepthLevelsRecursive();
 
 				assertEquals(Arrays.toString(expectedMinAndMaxDepthLevels), Arrays.toString(resultMinAndMaxDepthLevels));		
 			});
