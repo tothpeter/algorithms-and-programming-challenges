@@ -1,29 +1,37 @@
 package practice;
 
+import static com.greghaskins.spectrum.dsl.specification.Specification.describe;
+import static com.greghaskins.spectrum.dsl.specification.Specification.it;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class StringPracticeTest {
+import com.greghaskins.spectrum.Spectrum;
 
-	@Test
-	public void testReverseWhenInputIsEvenLong() {
-		String input    = "abc";
-		String expected = "cba";
-		
-		String result = StringPractice.reverse(input);
-		
-		assertEquals(expected, result);
-	}
+@RunWith(Spectrum.class)
+public class StringPracticeTest {{
 	
-	@Test
-	public void testReverseWhenInputIsOddLong() {
-		String input    = "abcd";
-		String expected = "dcba";
+	describe(".reverseInPlace", () -> {
+		describe("when the length of the input is an even number", () -> {
+			it("reverses the given string", () -> {
+				String input    = "abc";
+				String expected = "cba";
+				
+				String result = StringPractice.reverseInPlace(input);
+				
+				assertEquals(expected, result);
+			});
+		});
 		
-		String result = StringPractice.reverse(input);
-		
-		assertEquals(expected, result);
-	}
-
-}
+		describe("when the length of the input is an odd number", () -> {
+			it("reverses the given string", () -> {
+				String input    = "abcd";
+				String expected = "dcba";
+				
+				String result = StringPractice.reverseInPlace(input);
+				
+				assertEquals(expected, result);
+			});
+		});
+	});
+}}

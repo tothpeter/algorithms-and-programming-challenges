@@ -1,7 +1,7 @@
 package practice;
 
 public class StringPractice {
-	public static String reverse(String input) {
+	public static String reverseInPlace(String input) {
 		char[] chars = input.toCharArray();
 		char tempChar;
 
