@@ -9,7 +9,7 @@ import interview_cake.P01StockPrice;
 public class P01StockPriceTest {
 
 	@Test
-	public void testNormalCase() {
+	public void testBasicCase() {
 		int[] stockPricesYesterday = new int[] { 10, 7, 5, 8, 11, 9 };
 		
 		int result = P01StockPrice.getMaxProfit(stockPricesYesterday);
@@ -27,7 +27,7 @@ public class P01StockPriceTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)  
-	public void testThrowsAnException() {
+	public void testWhenInputContainsOnlyOneItem() {
 		P01StockPrice.getMaxProfit(new int[] {1});
 	}
 

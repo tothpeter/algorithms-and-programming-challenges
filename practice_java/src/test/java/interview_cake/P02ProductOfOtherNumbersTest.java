@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class P02ProductOfOtherNumbersTest {
 
 	@Test
-	public void testGeneralCase() {
+	public void testBasicCase() {
 		int[] inputList = new int[] { 1, 7, 3, 4 };
 		int[] expectedList = new int[] { 84, 12, 28, 21 };
 

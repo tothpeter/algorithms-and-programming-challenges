@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class P04MergingRangesTest {
 
 	@Test
-	public void testWhenEventOnlyTouching() {
+	public void testWhenEventsOnlyTouching() {
 		Meeting[] inputList = { new Meeting(0, 1), new  Meeting(1, 2) };
 		Meeting[] expectedList = { new Meeting(0, 2) };
 		

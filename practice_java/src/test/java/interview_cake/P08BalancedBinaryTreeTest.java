@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class P08BalancedBinaryTreeTest {
 
-	// A tree is "superbalanced" if the difference between the depths of any two leaf nodes ↴ is no greater than one.
+	// A tree is "superbalanced" if the difference between the depths of any two leaf nodes is no greater than one.
 	@Test
 	public void testIsSuperbalancedIterativeForFalseCase() {
 		P08BalancedBinaryTree bst = new P08BalancedBinaryTree();
