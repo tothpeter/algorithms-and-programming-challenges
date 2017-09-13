@@ -13,21 +13,6 @@ import com.greghaskins.spectrum.Spectrum;
 
 @RunWith(Spectrum.class)
 public class BinarySearchTreeTest {{
-	
-	describe("#", () -> {
-		describe("when ", () -> {
-			it("", () -> {
-
-			});
-		});
-	});
-	
-	describe("#", () -> {
-		it("", () -> {
-
-		});
-	});
-	
 	describe("#addItem", () -> {
 		describe("when the input is a single item", () -> {
 			it("puts the new item into the right place", () -> {
