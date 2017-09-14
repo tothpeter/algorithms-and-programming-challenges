@@ -3,6 +3,7 @@
 ## The implemented algorithms so far
 
 ### In Java
+- Various Interview Cake challenges
 - LRU (last recently used) cache
 - Trees
   - Binary search tree
