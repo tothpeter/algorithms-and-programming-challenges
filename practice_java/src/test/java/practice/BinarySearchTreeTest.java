@@ -43,7 +43,7 @@ public class BinarySearchTreeTest {{
 		});
 	});
 
-	describe("#getPreOrderList", () -> {
+	describe("#getPreorderList", () -> {
 		it("returns the values in preorder", () -> {
 			BinarySearchTree bst = new BinarySearchTree();
 
@@ -58,7 +58,7 @@ public class BinarySearchTreeTest {{
 		});
 	});
 	
-	describe("#getInOrderList", () -> {
+	describe("#getInorderList", () -> {
 		it("returns the values in inorder", () -> {
 			BinarySearchTree bst = new BinarySearchTree();
 
@@ -67,13 +67,13 @@ public class BinarySearchTreeTest {{
 			
 			bst.addItem(input);
 			
-			List<Integer> output = bst.getInOrderList();
+			List<Integer> output = bst.getInorderList();
 			
 			assertEquals(expectedOutput, output);
 		});
 	});
 	
-	describe("#getPostOrderList", () -> {
+	describe("#getPostorderList", () -> {
 		it("returns the values in postorder", () -> {
 			BinarySearchTree bst = new BinarySearchTree();
 
@@ -82,20 +82,20 @@ public class BinarySearchTreeTest {{
 			
 			bst.addItem(input);
 			
-			List<Integer> output = bst.getPostOrderList();
+			List<Integer> output = bst.getPostorderList();
 			
 			assertEquals(expectedOutput, output);
 		});
 	});
 	
-	describe("#buildFromPreOrderList", () -> {
+	describe("#buildFromPreorderList", () -> {
 		it("constructs a tree from a preorder item list", () -> {
 			BinarySearchTree bst = new BinarySearchTree();
 
 			int[] input = { 7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10 };
 			List<Integer> expectedOutput = Arrays.asList( 7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10 );
 			
-			bst.buildFromPreOrderList(input);
+			bst.buildFromPreorderList(input);
 			
 			List<Integer> output = bst.getPreOrderList();
 			

@@ -56,32 +56,32 @@ public class BinarySearchTree {
 		return list;
 	}
 	
-	public ArrayList<Integer> getInOrderList() {
+	public ArrayList<Integer> getInorderList() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
-		return getInOrderListRecursive(root, list);
+		return getInorderListRecursive(root, list);
 	}
 	
-	private ArrayList<Integer> getInOrderListRecursive(BinaryTreeNode node, ArrayList<Integer> list) {
+	private ArrayList<Integer> getInorderListRecursive(BinaryTreeNode node, ArrayList<Integer> list) {
 		if (node != null) {
-			getInOrderListRecursive(node.left, list);
+			getInorderListRecursive(node.left, list);
 			list.add(node.value);
-			getInOrderListRecursive(node.right, list);
+			getInorderListRecursive(node.right, list);
 		}
 		
 		return list;
 	}
 	
-	public ArrayList<Integer> getPostOrderList() {
+	public ArrayList<Integer> getPostorderList() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
-		return getPostOrderListRecursive(root, list);
+		return getPostorderListRecursive(root, list);
 	}
 	
-	private ArrayList<Integer> getPostOrderListRecursive(BinaryTreeNode node, ArrayList<Integer> list) {
+	private ArrayList<Integer> getPostorderListRecursive(BinaryTreeNode node, ArrayList<Integer> list) {
 		if (node != null) {
-			getPostOrderListRecursive(node.left, list);
-			getPostOrderListRecursive(node.right, list);
+			getPostorderListRecursive(node.left, list);
+			getPostorderListRecursive(node.right, list);
 			list.add(node.value);
 		}
 		
@@ -89,11 +89,11 @@ public class BinarySearchTree {
 	}
 	
 	//	construct tree
-	public void buildFromPreOrderList(int[] preOrderList) {
-		root = buildFromPreOrderList(preOrderList, 0, preOrderList.length - 1);
+	public void buildFromPreorderList(int[] preOrderList) {
+		root = buildFromPreorderList(preOrderList, 0, preOrderList.length - 1);
 	}
 	
-	private BinaryTreeNode buildFromPreOrderList(int[] preOrderList, int startIndex, int endIndex) {
+	private BinaryTreeNode buildFromPreorderList(int[] preOrderList, int startIndex, int endIndex) {
 		if (startIndex > endIndex) {
 			return null;
 		}
@@ -108,8 +108,8 @@ public class BinarySearchTree {
 		
 		for (; preOrderList[greaterThanRootIndex] < preOrderList[startIndex] && greaterThanRootIndex <= endIndex; greaterThanRootIndex++) {}
 		
-		node.left = buildFromPreOrderList(preOrderList, startIndex + 1, greaterThanRootIndex - 1);
-		node.right = buildFromPreOrderList(preOrderList, greaterThanRootIndex, endIndex);
+		node.left = buildFromPreorderList(preOrderList, startIndex + 1, greaterThanRootIndex - 1);
+		node.right = buildFromPreorderList(preOrderList, greaterThanRootIndex, endIndex);
 
 		return node;
 	}
