@@ -3,7 +3,7 @@
 ## The implemented algorithms so far
 
 ### In Java
-- Various Interview Cake challenges
+- Various [Interview Cake](https://www.interviewcake.com/all-questions/java) challenges
 - LRU (last recently used) cache
 - Trees
   - Binary search tree
@@ -22,7 +22,6 @@
   - add nodes
   - loop detection O(n) time, O(1) space
   - reverse the order in place O(n) time, O(1) space
-- Other challenging tasks from Interview cake
 
 ### In JavaScript
 - String related challenges
