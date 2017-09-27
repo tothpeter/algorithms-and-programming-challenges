@@ -1,4 +1,4 @@
-require './solution'
+require './challenge'
 
 examples = [
   {
@@ -26,6 +26,11 @@ examples = [
     expected_output: 5,
     hint: "10000010001"
   },
+  {
+    input: 0,
+    expected_output: 0,
+    hint: "0"
+  }
 ]
 
 describe "solution1" do

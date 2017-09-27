@@ -20,11 +20,11 @@ end
 
 
 def solution2 n
-  binary_numbers = n.to_s(2)
+  str = n.to_s(2)
 
-  only_zeros = binary_numbers.split("1")
+  zeros = str.split('1')
 
-  only_zeros.pop if binary_numbers[-1] != "1"
+  zeros.pop if str[-1] != "1"
 
-  only_zeros.inject(0){ |acc, s| [acc, s.length].max }
+  zeros.inject(0){ |acc, gap| [acc, gap.length].max }
 end
