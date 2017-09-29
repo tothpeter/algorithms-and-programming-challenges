@@ -1,4 +1,5 @@
 # Time Complexity / TapeEquilibrium
+# Minimize the value |(A[0] + ... + A[P-1]) - (A[P] + ... + A[N-1])|.
 
 def solution list
   sum_of_left_part  = 0

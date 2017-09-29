@@ -1,4 +1,4 @@
-require './challenge3'
+require './challenge3_tape_equilibrium'
 
 describe 'solution' do
   it 'returns the min difference' do
