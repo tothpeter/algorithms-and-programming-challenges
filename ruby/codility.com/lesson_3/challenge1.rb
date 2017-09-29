@@ -1,3 +1,4 @@
+# Time Complexity / PermMissingElem
 def solution list
   return 1 if list.empty?
 
