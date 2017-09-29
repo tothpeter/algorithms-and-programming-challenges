@@ -1,4 +1,4 @@
-# Prefix Sums / CountDiv
+# CountDiv
 # Compute number of integers divisible by k in range [a..b].
 
 def solution bottom_limit, top_limit, number
