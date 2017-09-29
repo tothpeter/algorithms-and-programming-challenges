@@ -15,6 +15,18 @@ module Assertions
   end
 end
 
+def test_batch_examples examples, method_to_invoke = :solution
+  examples.each do |example|
+    context example[:context] do
+      it "returns #{example[:expected_output]} for #{example[:input]}" do
+        output = send method_to_invoke, *example[:input]
+
+        expect(output).to eq(example[:expected_output])
+      end
+    end
+  end
+end
+
 RSpec.configure do |config|
   config.include Assertions
 end
