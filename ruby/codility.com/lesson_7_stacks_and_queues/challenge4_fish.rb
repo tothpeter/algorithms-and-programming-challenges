@@ -25,3 +25,28 @@ def solution1 fish_sizes, fish_directions
 
   alive_counter
 end
+
+
+# Approach: count the survivals isntead of the deaths
+def solution2 fish_sizes, fish_directions
+  survive_counter = 0
+
+  fish_flowing_down = []
+
+  fish_sizes.zip(fish_directions).each do |size, direction|
+    if direction == 1
+      fish_flowing_down << size
+    else
+      # fight!
+      while fish_flowing_down.any? && fish_flowing_down.last < size
+        fish_flowing_down.pop
+      end
+
+      if fish_flowing_down.empty?
+        survive_counter += 1
+      end
+    end
+  end
+
+  fish_flowing_down.length + survive_counter
+end

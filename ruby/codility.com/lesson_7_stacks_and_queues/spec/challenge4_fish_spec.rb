@@ -29,6 +29,10 @@ examples = [
   }
 ]
 
-describe "solution1" do
-  test_batch_examples examples, :solution1
+# describe "solution1" do
+#   test_batch_examples examples, :solution1
+# end
+
+describe "solution2" do
+  test_batch_examples examples, :solution2
 end
