@@ -1,4 +1,4 @@
-require './challenge3_missing_integer'
+require './3_missing_integer'
 
 examples = [
   {

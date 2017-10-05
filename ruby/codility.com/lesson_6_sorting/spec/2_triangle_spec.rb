@@ -1,4 +1,4 @@
-require './challenge2_triangle'
+require './2_triangle'
 
 describe 'solution' do
   describe 'positive cases' do

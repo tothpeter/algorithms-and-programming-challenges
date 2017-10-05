@@ -1,4 +1,4 @@
-require './challenge2_frog_river_one'
+require './2_frog_river_one'
 
 describe 'solution' do
   context "when the frog can not cross the river" do

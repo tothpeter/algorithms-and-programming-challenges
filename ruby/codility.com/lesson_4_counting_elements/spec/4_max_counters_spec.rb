@@ -1,4 +1,4 @@
-require './challenge4_max_counters'
+require './4_max_counters'
 
 describe 'solution1' do
   describe 'first rule' do

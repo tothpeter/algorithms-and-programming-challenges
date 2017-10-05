@@ -1,4 +1,4 @@
-require './challenge'
+require './1_binary_gap'
 
 examples = [
   {

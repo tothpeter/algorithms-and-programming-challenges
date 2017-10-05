@@ -1,4 +1,4 @@
-require './challenge3_max_product_of_three'
+require './3_max_product_of_three'
 
 describe 'solution1' do
   context 'when the best is using the 3 biggest number' do

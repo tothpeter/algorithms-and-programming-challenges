@@ -1,4 +1,4 @@
-require './challenge1'
+require './1_odd_occurrences_in_array'
 
 describe 'solution1' do
   it 'returns the odd times occuring item' do

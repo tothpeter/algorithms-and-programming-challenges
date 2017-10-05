@@ -1,4 +1,4 @@
-require './challenge1_perm_check'
+require './1_perm_check'
 
 examples = [
   {

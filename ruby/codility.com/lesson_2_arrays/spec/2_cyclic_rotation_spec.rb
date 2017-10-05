@@ -1,4 +1,4 @@
-require './challenge2'
+require './2_cyclic_rotation'
 
 describe 'solution2' do
   context "when the number of rotates is the same number as the lenght of the list" do

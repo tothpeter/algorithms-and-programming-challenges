@@ -1,4 +1,4 @@
-require './challenge1_distinct'
+require './1_distinct'
 
 describe 'solution1' do
   it 'it returns number of distinct values in order' do

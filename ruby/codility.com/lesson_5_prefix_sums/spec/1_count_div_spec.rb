@@ -1,4 +1,4 @@
-require './challenge1_count_div'
+require './1_count_div'
 require '../../spec_helper'
 
 examples = [

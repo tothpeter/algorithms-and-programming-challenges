@@ -1,4 +1,4 @@
-require './challenge2_frog_jmp'
+require './2_frog_jmp'
 
 describe 'solution' do
   it 'returns the minimum number of jumps' do

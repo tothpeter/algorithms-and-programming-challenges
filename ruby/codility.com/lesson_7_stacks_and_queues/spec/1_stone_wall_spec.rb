@@ -1,4 +1,4 @@
-require './challenge1_stone_wall'
+require './1_stone_wall'
 require '../../spec_helper'
 
 examples = [

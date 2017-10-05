@@ -1,4 +1,4 @@
-require './challenge4_min_avg_two_slice'
+require './4_min_avg_two_slice'
 
 describe 'solution' do
   describe 'example1' do

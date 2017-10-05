@@ -1,4 +1,4 @@
-require './challenge2_passing_cars'
+require './2_passing_cars'
 
 describe 'solution' do
   it '' do

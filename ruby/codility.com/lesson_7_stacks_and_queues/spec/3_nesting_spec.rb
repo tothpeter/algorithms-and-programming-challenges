@@ -1,4 +1,4 @@
-require './challenge3_nesting'
+require './3_nesting'
 require '../../spec_helper'
 
 examples = [

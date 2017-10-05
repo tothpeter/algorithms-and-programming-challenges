@@ -1,4 +1,4 @@
-require './challenge2_brackets'
+require './2_brackets'
 require '../../spec_helper'
 
 examples = [

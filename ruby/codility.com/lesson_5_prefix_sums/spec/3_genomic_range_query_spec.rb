@@ -1,4 +1,4 @@
-require './challenge3_genomic_range_query'
+require './3_genomic_range_query'
 
 describe 'solution' do
   let(:dna_string)      { 'CAGCCTA' }
