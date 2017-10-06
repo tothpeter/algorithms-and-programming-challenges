@@ -1,4 +1,3 @@
-# Counting Elements / PermCheck
 # Check whether array List is a permutation.
 
 require 'set'

@@ -1,4 +1,3 @@
-# Counting Elements / PassingCars
 # Count the number of passing cars on the road.
 
 def solution car_directions

@@ -1,4 +1,6 @@
-def solution2 list, n
+# Rotate an array to the right by a given number of steps.
+
+def solution1 list, n
   n = n % list.length if n >= list.length
 
   n.times do

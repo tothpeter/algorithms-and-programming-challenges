@@ -1,3 +1,5 @@
+# Find longest sequence of zeros in binary representation of an integer.
+
 def solution1 n
   binary_numbers = n.to_s(2).chars
   binary_numbers.shift

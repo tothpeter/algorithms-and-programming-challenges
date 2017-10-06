@@ -1,4 +1,3 @@
-# Time Complexity / PermMissingElem
 # Find the missing element in a given permutation.
 
 def solution list
