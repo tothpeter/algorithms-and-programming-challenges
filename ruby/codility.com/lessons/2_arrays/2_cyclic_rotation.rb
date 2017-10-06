@@ -15,4 +15,10 @@ def solution1 list, n
 
     list[0] = last_item
   end
+
+  list
+end
+
+def solution2 list, n
+  list.rotate -n
 end

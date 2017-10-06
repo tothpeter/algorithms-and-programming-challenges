@@ -1,43 +1,28 @@
 require './2_cyclic_rotation'
+require '../../../spec_helper'
 
-describe 'solution1' do
-  context "when the number of rotates is the same number as the lenght of the list" do
-    it 'does not rotate the list' do
-      list          = [ 1, 2, 3 ]
-      expected_list = [ 1, 2, 3 ]
+examples = [
+  {
+    context: 'when the number of rotates is the same number as the lenght of the list',
+    input: [ [ 1, 2, 3 ], 6 ],
+    expected_output: [ 1, 2, 3 ]
+  },
+  {
+    context: 'when the number of rotates is bigger than the length of the list',
+    input: [ [ 1, 2, 3 ], 4 ],
+    expected_output: [ 3, 1, 2 ]
+  },
+  {
+    context: 'when the number of rotates is smaller than the length of the list',
+    input: [ [ 1, 2, 3 ], 1 ],
+    expected_output: [ 3, 1, 2 ]
+  },
+]
 
-      solution1 list, 6
+# describe "solution1" do
+#   test_batch_examples examples, :solution1
+# end
 
-      expect(list).to eq(expected_list)
-    end
-  end
-
-  context "when the number of rotates is bigger than the length of the list" do
-    it 'rotates the list by 1' do
-      list          = [ 1, 2, 3 ]
-      expected_list = [ 3, 1, 2 ]
-
-      solution1 list, 4
-
-      expect(list).to eq(expected_list)
-    end
-  end
-
-  context "when the number of rotates is smaller than the length of the list" do
-    it 'rotates the list' do
-      list          = [ 1, 2, 3 ]
-      expected_list = [ 3, 1, 2 ]
-
-      solution1 list, 1
-
-      expect(list).to eq(expected_list)
-
-      list          = [ 1, 2, 3 ]
-      expected_list = [ 2, 3, 1 ]
-
-      solution1 list, 2
-
-      expect(list).to eq(expected_list)
-    end
-  end
+describe "solution2" do
+  test_batch_examples examples, :solution2
 end
