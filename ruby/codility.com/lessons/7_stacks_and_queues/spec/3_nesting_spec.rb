@@ -1,5 +1,5 @@
 require './3_nesting'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {

@@ -1,5 +1,5 @@
 require './4_number_of_disc_intersections'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {

@@ -1,5 +1,5 @@
 require './2_brackets'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {

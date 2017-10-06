@@ -1,5 +1,5 @@
 require './2_dominator'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {

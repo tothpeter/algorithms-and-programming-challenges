@@ -1,5 +1,5 @@
 require './1_max_double_slice_sum'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {

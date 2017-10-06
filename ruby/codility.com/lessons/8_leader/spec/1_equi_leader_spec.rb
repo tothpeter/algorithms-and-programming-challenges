@@ -1,5 +1,5 @@
 require './1_equi_leader'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {

@@ -1,5 +1,5 @@
 require './4_fish'
-require '../../spec_helper'
+require '../../../spec_helper'
 
 examples = [
   {
