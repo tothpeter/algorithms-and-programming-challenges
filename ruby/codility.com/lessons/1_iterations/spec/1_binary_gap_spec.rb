@@ -25,11 +25,6 @@ examples = [
     input: 1041,
     expected_output: 5,
     hint: "10000010001"
-  },
-  {
-    input: 0,
-    expected_output: 0,
-    hint: "0"
   }
 ]
 
