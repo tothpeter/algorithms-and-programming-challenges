@@ -2,7 +2,6 @@
 
 def solution1 n
   binary_numbers = n.to_s(2).chars
-  binary_numbers.shift
 
   max         = 0
   current_max = 0
