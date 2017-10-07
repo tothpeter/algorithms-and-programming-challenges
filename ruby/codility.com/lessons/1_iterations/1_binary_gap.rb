@@ -8,7 +8,7 @@ def solution1 n
   current_max = 0
 
   binary_numbers.each do |binary_number|
-    if binary_number == "1"
+    if binary_number == '1'
       max = [current_max, max].max
 
       current_max = 0
@@ -28,5 +28,5 @@ def solution2 n
 
   zeros.pop if str[-1] != "1"
 
-  zeros.inject(0){ |acc, gap| [acc, gap.length].max }
+  zeros.inject(0){ |max, gap| [max, gap.length].max }
 end
