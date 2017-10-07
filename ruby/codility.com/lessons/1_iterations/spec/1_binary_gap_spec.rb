@@ -43,3 +43,11 @@ describe "solution2" do
     end
   end
 end
+
+describe "solution3" do
+  examples.each do |example|
+    it "returns #{example[:expected_output]} for #{example[:input].to_s(2)}" do
+      expect(solution3(example[:input])).to eq(example[:expected_output])
+    end
+  end
+end

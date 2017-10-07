@@ -30,3 +30,28 @@ def solution2 n
 
   zeros.inject(0){ |max, gap| [max, gap.length].max }
 end
+
+
+def solution3 number
+  while number > 0 && number % 2 == 0
+    number /= 2
+  end
+
+  max_gap = 0
+  current_gap = 0
+
+  while number > 0
+    reminder = number % 2
+
+    if reminder == 1
+      max_gap = [max_gap, current_gap].max
+      current_gap = 0
+    else
+      current_gap += 1
+    end
+
+    number /= 2
+  end
+
+  max_gap
+end
