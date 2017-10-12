@@ -19,6 +19,12 @@ examples = [
   },
   {
     context: 'basic case 4',
+    input: [ [ 1, -9, -100, 1, 2, 3, -100, 5 ] ],
+    # input: [ [ 1, -9, -100, 1, 2, 3, -100, 5, 0, 100, 0 ] ],
+    expected_output: 6
+  },
+  {
+    context: 'basic case 4',
     input: [ [ -2, -3, -4, 1, -5, -6, -7 ] ],
     expected_output: 1
   },
@@ -28,7 +34,7 @@ examples = [
     expected_output: 17
   },
   {
-    context: 'when we have less items than 4',
+    context: 'when we have less than 4 items',
     input: [ [ 1, 2, 3 ] ],
     expected_output: 0
   }
