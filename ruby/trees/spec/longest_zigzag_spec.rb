@@ -10,7 +10,7 @@ describe "solution" do
     end
   end
 
-  context 'when ' do
+  context 'when there is only one edge' do
     it 'returns the max count of zig zag' do
       bst = BinarySearchTree.new
       bst.add [ 1, 2, 3, 4 ]
@@ -19,7 +19,7 @@ describe "solution" do
     end
   end
 
-  context 'when ' do
+  context 'when there is left and right subtree' do
     it 'returns the max count of zig zag' do
       bst = BinarySearchTree.new
       bst.add [ 5, 3, 8, 1, 4, 7, 12, 9, 11, 10 ]
@@ -28,7 +28,7 @@ describe "solution" do
     end
   end
 
-  context 'when ' do
+  context 'when there is only right subtree' do
     it 'returns the max count of zig zag' do
       bst = BinarySearchTree.new
       bst.add [ 5, 8, 7, 12, 9, 11, 10 ]
@@ -36,6 +36,4 @@ describe "solution" do
       expect(solution(bst.root)).to eq 3
     end
   end
-
-
 end

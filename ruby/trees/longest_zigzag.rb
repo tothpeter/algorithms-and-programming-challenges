@@ -3,28 +3,22 @@
 def solution node
   return 0 if node.nil?
 
-  [ longest_zigzag(node.left, :left)[:change_count], longest_zigzag(node.right, :right)[:change_count] ].max
+  [ longest_zigzag(node.left, :left), longest_zigzag(node.right, :right) ].max
 end
 
 def longest_zigzag node, direction
-  return { node_count: 0, change_count: 0 } if node.nil?
+  return 0 if node.nil?
 
-  left = longest_zigzag(node.left, :left)
-  right = longest_zigzag(node.right, :right)
+  change_count_for_left  = longest_zigzag(node.left, :left)
+  change_count_for_right = longest_zigzag(node.right, :right)
 
-  if direction == :left
-    right[:change_count] += 1 if right[:node_count] > 0
+  if direction == :right
+    change_count_for_left += 1 if node.left
    else
-    left[:change_count] += 1 if left[:node_count] > 0
+    change_count_for_right += 1 if node.right
   end
 
-  if right[:change_count] > left[:change_count]
-    right[:node_count] += 1
-    right
-  else
-    left[:node_count] += 1
-    left
-  end
+  [ change_count_for_left, change_count_for_right ].max
 end
 
 
