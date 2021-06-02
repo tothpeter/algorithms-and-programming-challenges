@@ -1,46 +1,51 @@
+# frozen_string_literal: true
+
 # Find longest sequence of zeros in binary representation of an integer.
 
-def solution1 n
-  binary_numbers = n.to_s(2).chars
+def solution1(decimal_number)
+  binary_digits  = decimal_number.to_s(2)
 
-  max         = 0
-  current_max = 0
+  max_gap     = 0
+  currant_gap = 0
 
-  binary_numbers.each do |binary_number|
+  binary_digits.chars.each do |binary_number|
     if binary_number == '1'
-      max = [current_max, max].max
-
-      current_max = 0
+      max_gap = [currant_gap, max_gap].max
+      currant_gap = 0
     else
-      current_max += 1
+      currant_gap += 1
     end
   end
 
-  max
+  max_gap
 end
 
 
-def solution2 n
-  str = n.to_s(2)
+def solution2(decimal_number)
+  binary_digits = decimal_number.to_s(2)
 
-  zeros = str.split('1')
+  gaps = binary_digits.split('1')
 
-  zeros.pop if str[-1] != "1"
+  gaps.pop if binary_digits.chars.last != '1'
 
-  zeros.inject(0){ |max, gap| [max, gap.length].max }
+  gaps_lengths = gaps.map!(&:length)
+
+  gaps_lengths.max || 0
+
+  # gaps.inject(0){ |max, gap| [max, gap.length].max }
 end
 
 
-def solution3 number
-  while number > 0 && number % 2 == 0
-    number /= 2
+def solution3(decimal_number)
+  while decimal_number > 0 && decimal_number % 2 == 0
+    decimal_number /= 2
   end
 
-  max_gap = 0
+  max_gap     = 0
   current_gap = 0
 
-  while number > 0
-    reminder = number % 2
+  while decimal_number > 0
+    reminder = decimal_number % 2
 
     if reminder == 1
       max_gap = [max_gap, current_gap].max
@@ -49,7 +54,7 @@ def solution3 number
       current_gap += 1
     end
 
-    number /= 2
+    decimal_number /= 2
   end
 
   max_gap
