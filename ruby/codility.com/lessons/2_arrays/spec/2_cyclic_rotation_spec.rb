@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './2_cyclic_rotation'
 require '../../../spec_helper'
 
@@ -34,10 +36,10 @@ examples = [
   }
 ]
 
-describe "solution1" do
-  test_batch_examples examples, :solution1
+describe 'solution_copy_one_by_one' do
+  test_batch_examples examples, :solution_copy_one_by_one
 end
 
-# describe "solution2" do
-#   test_batch_examples examples, :solution2
-# end
+describe 'solution_built_in' do
+  test_batch_examples examples, :solution_built_in
+end

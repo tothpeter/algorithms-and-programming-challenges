@@ -1,26 +1,30 @@
+# frozen_string_literal: true
+
 # Rotate an array to the right by a given number of steps.
 
-def solution1 list, n
-  return list if list.length == 0 || n == 0
+def solution_copy_one_by_one(list, rotate_by)
+  return list if list.length == 0 || rotate_by == 0
 
-  n = n % list.length if n >= list.length
+  new_list = list.dup
 
-  n.times do
-    last_item = list.last
+  rotate_by = rotate_by % new_list.length
 
-    i = list.length - 1
+  rotate_by.times do
+    last_item = new_list.last
 
-    while i > 0
-      list[i] = list[i - 1]
-      i -= 1
+    current_index = new_list.length - 1
+
+    while current_index > 0
+      new_list[current_index] = new_list[current_index - 1]
+      current_index -= 1
     end
 
-    list[0] = last_item
+    new_list[0] = last_item
   end
 
-  list
+  new_list
 end
 
-def solution2 list, n
-  list.rotate -n
+def solution_built_in(list, rotate_by)
+  list.rotate -rotate_by
 end
