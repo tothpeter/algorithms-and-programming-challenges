@@ -1,3 +1,7 @@
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require
+
 module Assertions
   def capture_io
     require 'stringio'
