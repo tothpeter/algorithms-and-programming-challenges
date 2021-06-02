@@ -40,6 +40,10 @@ describe 'solution_copy_one_by_one' do
   test_batch_examples examples, :solution_copy_one_by_one
 end
 
+describe 'solution_splitting' do
+  test_batch_examples examples, :solution_splitting
+end
+
 describe 'solution_built_in' do
   test_batch_examples examples, :solution_built_in
 end

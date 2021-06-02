@@ -25,6 +25,17 @@ def solution_copy_one_by_one(list, rotate_by)
   new_list
 end
 
+def solution_splitting(list, rotate_by)
+  return list if list.length == 0 || rotate_by == 0
+
+  rotate_by = rotate_by % list.length
+
+  new_right = list.take(list.length - rotate_by)
+  new_left  = list.slice(list.length - rotate_by, rotate_by)
+
+  new_left + new_right
+end
+
 def solution_built_in(list, rotate_by)
   list.rotate -rotate_by
 end
