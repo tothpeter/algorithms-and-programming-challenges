@@ -1,5 +1,6 @@
-require './01'
+# frozen_string_literal: true
 
+require './01'
 require '../../spec_helper'
 
 examples = [
