@@ -108,4 +108,54 @@ describe GildedRose do
     #   expect(item.quality).to eq(0)
     # end
   end
+
+  describe 'Backstage passes' do
+    it 'increases the quality by 1 when there are more than 10 days' do
+      item = Item.new('Backstage passes to a TAFKAL80ETC concert', 11, 0)
+
+      items = [ item ]
+
+      gilded_rose = GildedRose.new(items)
+
+      gilded_rose.update_quality
+
+      expect(item.quality).to eq(1)
+    end
+
+    it 'increases the quality by 2 when there are 10 days or less' do
+      item = Item.new('Backstage passes to a TAFKAL80ETC concert', 10, 0)
+
+      items = [ item ]
+
+      gilded_rose = GildedRose.new(items)
+
+      gilded_rose.update_quality
+
+      expect(item.quality).to eq(2)
+    end
+
+    it 'increases the quality by 3 when there are 5 days or less' do
+      item = Item.new('Backstage passes to a TAFKAL80ETC concert', 3, 0)
+
+      items = [ item ]
+
+      gilded_rose = GildedRose.new(items)
+
+      gilded_rose.update_quality
+
+      expect(item.quality).to eq(3)
+    end
+
+    it 'drops the quality to 0 after the concert' do
+      item = Item.new('Backstage passes to a TAFKAL80ETC concert', 0, 10)
+
+      items = [ item ]
+
+      gilded_rose = GildedRose.new(items)
+
+      gilded_rose.update_quality
+
+      expect(item.quality).to eq(0)
+    end
+  end
 end
