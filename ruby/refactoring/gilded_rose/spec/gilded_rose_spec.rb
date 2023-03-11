@@ -81,4 +81,31 @@ describe GildedRose do
       expect(item.quality).to eq(7)
     end
   end
+
+  describe 'Sulfuras' do
+    it 'never decreases the quality' do
+      item = Item.new('Sulfuras', 0, 10)
+
+      items = [ item ]
+
+      gilded_rose = GildedRose.new(items)
+
+      5.times { gilded_rose.update_quality }
+
+      expect(item.quality).to eq(0)
+    end
+
+    # Bug, it accepts sell_in > 0 and it decreases the quality
+    # it 'never has to be sold' do
+    #   item = Item.new('Sulfuras', 1, 10)
+
+    #   items = [ item ]
+
+    #   gilded_rose = GildedRose.new(items)
+
+    #   5.times { gilded_rose.update_quality }
+
+    #   expect(item.quality).to eq(0)
+    # end
+  end
 end
