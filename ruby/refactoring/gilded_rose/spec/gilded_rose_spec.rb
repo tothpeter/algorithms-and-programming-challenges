@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require './item'
 require './gilded_rose'
 
 describe GildedRose do
