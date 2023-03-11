@@ -84,7 +84,7 @@ describe GildedRose do
 
   describe 'Sulfuras' do
     it 'never decreases the quality' do
-      item = Item.new('Sulfuras', 0, 10)
+      item = Item.new('Sulfuras, Hand of Ragnaro', 0, 10)
 
       items = [ item ]
 
@@ -97,7 +97,7 @@ describe GildedRose do
 
     # Bug, it accepts sell_in > 0 and it decreases the quality
     # it 'never has to be sold' do
-    #   item = Item.new('Sulfuras', 1, 10)
+    #   item = Item.new('Sulfuras, Hand of Ragnaro', 1, 10)
 
     #   items = [ item ]
 
