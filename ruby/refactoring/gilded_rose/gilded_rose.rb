@@ -16,6 +16,9 @@ class GildedRose
         next
       when 'Sulfuras, Hand of Ragnaros'
         next
+      else
+        update_base_case(item)
+        next
       end
 
       if item.name != 'Aged Brie' and item.name != 'Backstage passes to a TAFKAL80ETC concert'
@@ -90,5 +93,17 @@ class GildedRose
     else
       item.quality += 1
     end
+  end
+
+  def update_base_case(item)
+    item.sell_in -= 1
+
+    if item.sell_in >= 0
+      item.quality -= 1
+    else
+      item.quality -= 2
+    end
+
+    item.quality = 0 if item.quality < 0
   end
 end
