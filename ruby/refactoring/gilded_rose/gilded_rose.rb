@@ -16,6 +16,9 @@ class GildedRose
       else
         update_base_case(item)
       end
+
+      item.quality = 50 if item.quality > 50
+      item.quality = 0 if item.quality < 0
     end
   end
 
@@ -29,8 +32,6 @@ class GildedRose
     else
       item.quality += 2
     end
-
-    item.quality = 50 if item.quality > 50
   end
 
   def update_backstage_passes(item)
@@ -55,7 +56,5 @@ class GildedRose
     else
       item.quality -= 2
     end
-
-    item.quality = 0 if item.quality < 0
   end
 end
