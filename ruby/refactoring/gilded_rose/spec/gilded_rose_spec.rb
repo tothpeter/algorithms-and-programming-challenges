@@ -86,8 +86,8 @@ describe GildedRose do
   end
 
   describe 'Sulfuras' do
-    it 'never decreases the quality' do
-      item = Item.new('Sulfuras, Hand of Ragnaro', 0, 10)
+    it 'never decreases the sell_in nor the quality' do
+      item = Item.new('Sulfuras, Hand of Ragnaros', 1, 10)
 
       items = [ item ]
 
@@ -95,21 +95,9 @@ describe GildedRose do
 
       5.times { gilded_rose.update_quality }
 
-      expect(item.quality).to eq(0)
+      expect(item.sell_in).to eq(1)
+      expect(item.quality).to eq(10)
     end
-
-    # Bug, it accepts sell_in > 0 and it decreases the quality
-    # it 'never has to be sold' do
-    #   item = Item.new('Sulfuras, Hand of Ragnaro', 1, 10)
-
-    #   items = [ item ]
-
-    #   gilded_rose = GildedRose.new(items)
-
-    #   5.times { gilded_rose.update_quality }
-
-    #   expect(item.quality).to eq(0)
-    # end
   end
 
   describe 'Backstage passes' do
