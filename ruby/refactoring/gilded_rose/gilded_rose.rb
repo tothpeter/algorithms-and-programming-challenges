@@ -11,6 +11,9 @@ class GildedRose
       when 'Aged Brie'
         update_aged_brie(item)
         next
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        update_backstage_passes(item)
+        next
       end
 
       if item.name != 'Aged Brie' and item.name != 'Backstage passes to a TAFKAL80ETC concert'
@@ -71,5 +74,19 @@ class GildedRose
     end
 
     item.quality = 50 if item.quality > 50
+  end
+
+  def update_backstage_passes(item)
+    item.sell_in -= 1
+
+    if item.sell_in < 0
+      item.quality = 0
+    elsif item.sell_in <= 2
+      item.quality += 3
+    elsif item.sell_in <= 9
+      item.quality += 2
+    else
+      item.quality += 1
+    end
   end
 end
