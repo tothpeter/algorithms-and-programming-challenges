@@ -17,7 +17,7 @@ class GildedRose
       when 'Backstage passes to a TAFKAL80ETC concert'
         update_backstage_passes(item)
       else
-        update_base_case(item)
+        update_general_item(item)
       end
 
       item.quality = 50 if item.quality > 50
@@ -47,7 +47,7 @@ class GildedRose
     end
   end
 
-  def update_base_case(item)
+  def update_general_item(item)
     if item.sell_in >= 0
       item.quality -= 1
     else
