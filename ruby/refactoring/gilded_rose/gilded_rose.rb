@@ -14,6 +14,8 @@ class GildedRose
       when 'Backstage passes to a TAFKAL80ETC concert'
         update_backstage_passes(item)
         next
+      when 'Sulfuras, Hand of Ragnaros'
+        next
       end
 
       if item.name != 'Aged Brie' and item.name != 'Backstage passes to a TAFKAL80ETC concert'
