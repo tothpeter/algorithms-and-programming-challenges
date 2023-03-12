@@ -16,6 +16,8 @@ class GildedRose
         update_aged_brie(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
         update_backstage_passes(item)
+      when 'Conjured'
+        update_conjured(item)
       else
         update_general_item(item)
       end
@@ -44,6 +46,14 @@ class GildedRose
       item.quality += 2
     else
       item.quality += 1
+    end
+  end
+
+  def update_conjured(item)
+    if item.sell_in >= 0
+      item.quality -= 2
+    else
+      item.quality -= 4
     end
   end
 

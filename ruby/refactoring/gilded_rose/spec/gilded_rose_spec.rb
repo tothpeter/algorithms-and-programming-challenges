@@ -157,4 +157,34 @@ describe GildedRose do
       end
     end
   end
+
+  describe 'Conjured items' do
+    context 'when sell by date has NOT passed' do
+      it 'lowers quality by 2' do
+        item = Item.new('Conjured', 10, 10)
+
+        items = [ item ]
+
+        gilded_rose = GildedRose.new(items)
+
+        2.times { gilded_rose.update_quality }
+
+        expect(item.quality).to eq(6)
+      end
+    end
+
+    context 'when sell by date has passed' do
+      it 'lowers quality by 4' do
+        item = Item.new('Conjured', 0, 10)
+
+        items = [ item ]
+
+        gilded_rose = GildedRose.new(items)
+
+        2.times { gilded_rose.update_quality }
+
+        expect(item.quality).to eq(2)
+      end
+    end
+  end
 end
