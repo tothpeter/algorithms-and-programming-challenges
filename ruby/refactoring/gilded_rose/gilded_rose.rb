@@ -13,11 +13,11 @@ class GildedRose
 
       case item.name
       when 'Aged Brie'
-        update_aged_brie(item)
+        update_aged_brie_item(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
-        update_backstage_passes(item)
+        update_backstage_passes_item(item)
       when 'Conjured'
-        update_conjured(item)
+        update_conjured_item(item)
       else
         update_general_item(item)
       end
@@ -29,7 +29,7 @@ class GildedRose
 
   private
 
-  def update_aged_brie(item)
+  def update_aged_brie_item(item)
     if item.sell_in >= 0
       item.quality += 1
     else
@@ -37,7 +37,7 @@ class GildedRose
     end
   end
 
-  def update_backstage_passes(item)
+  def update_backstage_passes_item(item)
     if item.sell_in < 0
       item.quality = 0
     elsif item.sell_in <= 2
@@ -49,7 +49,7 @@ class GildedRose
     end
   end
 
-  def update_conjured(item)
+  def update_conjured_item(item)
     if item.sell_in >= 0
       item.quality -= 2
     else
