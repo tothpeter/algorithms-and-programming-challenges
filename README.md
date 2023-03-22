@@ -2,7 +2,8 @@
 
 ## The implemented algorithms so far
 
-### In Java
+### Java
+
 - Various [Interview Cake](https://www.interviewcake.com/all-questions/java) challenges
 - LRU (last recently used) cache
 - Trees
@@ -23,11 +24,13 @@
   - loop detection O(n) time, O(1) space
   - reverse the order in place O(n) time, O(1) space
 
-### In JavaScript
+### JavaScript
+
 - String related challenges
   - Minify string
 
-### In ruby
+### Ruby
+
 - Find the sub array of an array of integers which has the biggest sum
 - Fibonacci
   - iterative
