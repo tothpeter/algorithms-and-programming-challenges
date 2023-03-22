@@ -1,58 +1,59 @@
 require './1_perm_check'
 
-examples = [
-  {
-    context: 'when the input is empty',
-    input: [ ],
-    expected_output: 0
-  },
-  {
-    context: 'when the input contains a duplicated element',
-    input: [ 2, 1, 3, 4, 2 ],
-    expected_output: 0
-  },
-  {
-    context: 'when the sum of the elements is what expected',
-    input: [ 1, 2, 2, 5 ],
-    expected_output: 0
-  },
-  {
-    context: 'when the input is missing an element',
-    input: [ 2, 1, 4 ],
-    expected_output: 0
-  },
-  {
-    context: 'when the input is a permutation',
-    input: [ 4, 2, 3, 1 ],
-    expected_output: 1
-  }
-]
+context 'when there is a permutation' do
+  it 'returns 1' do
+    result = solution1([1,4,3,2])
 
-describe "solution1" do
-  examples.each do |example|
-    context example[:context] do
-      it "returns #{example[:expected_output]} for #{example[:input]}" do
-        expect(solution1(example[:input])).to eq(example[:expected_output])
-      end
-    end
+    expect(result).to eq(1)
   end
 end
 
-describe "solution2" do
-  examples.each do |example|
-    context example[:context] do
-      it "returns #{example[:expected_output]} for #{example[:input]}" do
-        expect(solution2(example[:input])).to eq(example[:expected_output])
-      end
+
+context 'when there is NO permutation' do
+  context 'sum is NOT okay' do
+    it 'returns 0' do
+      result = solution1([1,2,2])
+
+      expect(result).to eq(0)
     end
   end
-end
 
-describe "solution3" do
-  examples.each do |example|
-    context example[:context] do
-      it "returns #{example[:expected_output]} for #{example[:input]}" do
-        expect(solution3(example[:input])).to eq(example[:expected_output])
+  context 'sum is okay but not unique' do
+    it 'returns 0' do
+      result = solution1([1,2,2,2,5])
+
+      expect(result).to eq(0)
+    end
+  end
+
+  it 'returns 0' do
+    result = solution1([2,3,4])
+
+    expect(result).to eq(0)
+  end
+
+  context 'sum is okay' do
+    context 'not uniq max is NOT okay' do
+      it 'returns 0' do
+        result = solution1([1,2,2,5])
+
+        expect(result).to eq(0)
+      end
+    end
+
+    context 'not uniq max is okay' do
+      it 'returns 0' do
+        result = solution1([1,2,2,5,5,6])
+
+        expect(result).to eq(0)
+      end
+    end
+
+    context 'does not start with 1' do
+      it 'returns 0' do
+        result = solution1([2,2,2])
+
+        expect(result).to eq(0)
       end
     end
   end
