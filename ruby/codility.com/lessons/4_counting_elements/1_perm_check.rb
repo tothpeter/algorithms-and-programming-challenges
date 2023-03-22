@@ -2,15 +2,15 @@
 
 require 'set'
 
-def solution1 list
-  return 0 if list.empty?
+def solution1(input_list)
+  # Does it start from one?
+  return 0 if input_list.min != 1
+  # Does it end with the right element?
+  return 0 if input_list.max != input_list.length
+  # Is it uniqe?
+  return 0 if input_list.uniq.length != input_list.length
 
-  return 0 if list.any? { |item| item > list.length }
-
-  actual_sum = list.inject :+
-  expected_sum = (1 + list.length) * list.length / 2
-
-  actual_sum == expected_sum ? 1 : 0
+  1
 end
 
 
