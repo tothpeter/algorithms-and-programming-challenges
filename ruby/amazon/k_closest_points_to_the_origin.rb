@@ -2,7 +2,7 @@
 
 require 'set'
 
-def solution1 points, k
+def solution1(points, k)
   distances_with_point = []
 
   points.each do |x, y|
@@ -15,7 +15,8 @@ def solution1 points, k
 end
 
 
-def solution2 points, k
+# WIP
+def solution2(points, k)
   result = points.take(k)
 
   distances = points.map { |x, y| x * x + y * y }

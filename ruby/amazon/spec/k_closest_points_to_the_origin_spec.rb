@@ -1,6 +1,6 @@
 require './k_closest_points_to_the_origin'
 
-require '../../spec_helper'
+require '../spec_helper'
 
 examples = [
   {
