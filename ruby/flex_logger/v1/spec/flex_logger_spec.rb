@@ -4,7 +4,7 @@ require 'ostruct'
 
 require './flex_logger'
 
-class Rails
+module Rails
   def self.logger
     @logger ||= ::Logger.new(STDOUT)
   end

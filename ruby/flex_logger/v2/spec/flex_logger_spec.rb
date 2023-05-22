@@ -4,7 +4,7 @@ require 'logger'
 require './flex_logger'
 require './flex_logger/message_builder'
 
-class Rails
+module Rails
   def self.logger
     @logger ||= ::Logger.new(STDOUT)
   end
