@@ -54,3 +54,46 @@ describe 'Solution #1' do
     end
   end
 end
+
+
+describe 'Solution #4' do
+  context 'when it is a permutation' do
+    it 'returns 1' do
+      input = [2, 3, 4, 1]
+      result = Solution.solution4(input)
+      expected_result = 1
+
+      expect(result).to eq(expected_result)
+    end
+  end
+
+  context 'when it is a permutation and has only one item' do
+    it 'returns 1' do
+      input = [1]
+      result = Solution.solution4(input)
+      expected_result = 1
+
+      expect(result).to eq(expected_result)
+    end
+  end
+
+  context 'when one item is missing' do
+    it 'returns 0' do
+      input = [2, 4, 1]
+      result = Solution.solution4(input)
+      expected_result = 0
+
+      expect(result).to eq(expected_result)
+    end
+  end
+
+  context 'when it does not start with 1' do
+    it 'returns 0' do
+      input = [2, 3, 4]
+      result = Solution.solution4(input)
+      expected_result = 0
+
+      expect(result).to eq(expected_result)
+    end
+  end
+end

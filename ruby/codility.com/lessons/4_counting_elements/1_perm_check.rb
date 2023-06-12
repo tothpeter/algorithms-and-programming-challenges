@@ -44,4 +44,17 @@ class Solution
       return 0
     end
   end
+
+  # 100% score on Codility
+  def self.solution4(numbers)
+    return 0 if numbers.min != 1
+
+    max = numbers.length
+
+    if numbers.sort == (1..max).to_a
+      1
+    else
+      0
+    end
+  end
 end
