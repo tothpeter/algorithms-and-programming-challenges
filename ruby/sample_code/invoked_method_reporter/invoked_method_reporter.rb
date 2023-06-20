@@ -47,8 +47,6 @@ module InvokedMethodReporter
     raise e if Rails.env.test?
   end
 
-  private_class_method
-
   def self.sender_trace
     backtrace_cleaner = ActiveSupport::BacktraceCleaner.new
 
@@ -64,4 +62,6 @@ module InvokedMethodReporter
 
     backtrace_cleaner.clean(caller).first
   end
+
+  private_class_method :sender_trace
 end
