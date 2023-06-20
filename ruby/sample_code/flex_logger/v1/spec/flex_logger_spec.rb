@@ -1,20 +1,9 @@
 require 'active_support/core_ext/array'
-require 'logger'
 require 'ostruct'
 
+require '../mocks'
+
 require './flex_logger'
-
-module Rails
-  def self.logger
-    @logger ||= ::Logger.new(STDOUT)
-  end
-end
-
-class Loan
-  def ref_id
-    'loan_ref_id'
-  end
-end
 
 describe FlexLogger do
   describe '.info' do
