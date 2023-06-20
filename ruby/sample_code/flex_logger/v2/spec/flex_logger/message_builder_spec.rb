@@ -28,12 +28,12 @@ describe FlexLogger::MessageBuilder do
           random_object
         ]
 
-        expected_log_message = '[namespace][loan_ref_id] Log message | ' +
-                               '{:a=>1, :b=>2} | ' +
-                               '88 | ' +
-                               'nil | ' +
-                               '#<OpenStruct param1="val"> | ' +
-                               'StandardError: Error message '
+        expected_log_message = '[namespace][loan_ref_id] Log message' +
+                               ' | {:a=>1, :b=>2}' +
+                               ' | 88' +
+                               ' | nil' +
+                               ' | #<OpenStruct param1="val">' +
+                               ' | StandardError: Error message '
 
         log_message = builder.build(*arguments)
 
