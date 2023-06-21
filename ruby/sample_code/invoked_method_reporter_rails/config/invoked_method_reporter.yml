@@ -1,0 +1,5 @@
+# Please list the modules first then the classes.
+# Binding is useless for modules after they get included
+# or a class/module uses them with extend.
+
+methods_to_report: []
