@@ -128,5 +128,16 @@ describe InvokedMethodReporter do
         TargetClass.class_method_from_class
       end
     end
+
+    it 'reports one method max InvokedMethodReporter::MAX_REPORT_COUNT times' do
+      expect(InvokedMethodReporter::ReporterJob).to receive(:perform_later)
+        .exactly(described_class::MAX_REPORT_COUNT).times.and_call_original
+
+      described_class::MAX_REPORT_COUNT.times do
+        described_class.report('fake_method')
+      end
+
+      described_class.report('fake_method')
+    end
   end
 end

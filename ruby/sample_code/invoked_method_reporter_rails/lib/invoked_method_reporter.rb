@@ -12,6 +12,9 @@ end
 
 module InvokedMethodReporter
   CONFIG_FILE_PATH = 'config/invoked_method_reporter.yml'
+  MAX_REPORT_COUNT = 10
+
+  @@report_count = Hash.new(0)
 
   def self.setup(config_file_path = CONFIG_FILE_PATH)
     config = YAML.load_file(config_file_path)
@@ -32,6 +35,9 @@ module InvokedMethodReporter
   end
 
   def self.report(method_definition)
+    return if @@report_count[method_definition] >= MAX_REPORT_COUNT
+    @@report_count[method_definition] += 1
+
     message = "[InvokedMethodReporter] #{method_definition} was invoked"
     original_caller = fetch_original_caller
 
