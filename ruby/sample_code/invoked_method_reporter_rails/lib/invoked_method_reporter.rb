@@ -41,7 +41,7 @@ module InvokedMethodReporter
     Rails.logger.info("#{message} #{report_params.to_json}")
   rescue StandardError => e
     Rollbar.error('Error in InvokedMethodReporter.report', e)
-    raise e if Rails.env.test?
+    raise(e) if Rails.env.test?
   end
 
   def self.backtrace
