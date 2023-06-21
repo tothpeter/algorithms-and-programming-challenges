@@ -10,19 +10,19 @@ describe InvokedMethodReporter do
 
     def original_impl_from_module; end
 
-    def self.method_in_module
-      original_impl_in_module
+    def self.class_method_on_module
+      original_class_impl_in_module
     end
 
-    def self.original_impl_in_module; end
+    def self.original_class_impl_in_module; end
   end
 
   class TargetClass
-    def method_from_class
+    def instance_method_from_class
       original_impl_from_module
     end
 
-    def self.method_from_class
+    def self.class_method_from_class
       original_impl_from_module
     end
   end
@@ -51,9 +51,9 @@ describe InvokedMethodReporter do
     context 'when the method is defined in the target module' do
       it 'invokes the reporter then the original implementation' do
         expect(described_class).to receive(:report).ordered.and_call_original
-        expect(TargetModule).to receive(:original_impl_in_module).ordered
+        expect(TargetModule).to receive(:original_class_impl_in_module).ordered
 
-        TargetModule.method_in_module
+        TargetModule.class_method_on_module
       end
     end
 
@@ -87,7 +87,7 @@ describe InvokedMethodReporter do
           expect(described_class).to receive(:report).ordered.and_call_original
           expect(target_class_object).to receive(:original_impl_from_module).ordered
 
-          target_class_object.method_from_class
+          target_class_object.instance_method_from_class
         end
       end
 
@@ -96,7 +96,7 @@ describe InvokedMethodReporter do
           expect(described_class).to receive(:report).ordered.and_call_original
           expect(TargetClass).to receive(:original_impl_from_module).ordered
 
-          TargetClass.method_from_class
+          TargetClass.class_method_from_class
         end
       end
     end
@@ -116,14 +116,14 @@ describe InvokedMethodReporter do
 
     context 'when the method is defined by the class itself' do
       it 'invokes Rollbar with the right params' do
-        expected_message1 = '[InvokedMethodReporter] TargetClass#method_from_class was invoked'
-        expected_message2 = '[InvokedMethodReporter] TargetClass.method_from_class was invoked'
+        expected_message1 = '[InvokedMethodReporter] TargetClass#instance_method_from_class was invoked'
+        expected_message2 = '[InvokedMethodReporter] TargetClass.class_method_from_class was invoked'
 
         expect(Rollbar).to receive(:info).with(expected_message1, anything)
         expect(Rollbar).to receive(:info).with(expected_message2, anything)
 
-        TargetClass.method_from_class
-        TargetClass.new.method_from_class
+        TargetClass.class_method_from_class
+        TargetClass.new.instance_method_from_class
       end
     end
   end

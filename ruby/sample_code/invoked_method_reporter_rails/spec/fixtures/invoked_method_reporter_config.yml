@@ -1,9 +1,9 @@
 methods: [
   # Modules
   'TargetModule#method_from_module',
-  'TargetModule.method_in_module',
+  'TargetModule.class_method_on_module',
 
   # Classes
-  'TargetClass#method_from_class',
-  'TargetClass.method_from_class'
+  'TargetClass#instance_method_from_class',
+  'TargetClass.class_method_from_class'
 ]
