@@ -1,6 +1,7 @@
 methods: [
   # Modules
   'UnusedModule#unused_method',
+  'UnusedModule.class_level',
 
   # Classes
   'User.last'
