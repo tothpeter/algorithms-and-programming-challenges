@@ -4,17 +4,17 @@ require 'rails_helper'
 
 describe InvokedMethodReporter do
   module TargetModule
-    def original_impl_from_module; end
-
     def method_from_module
       original_impl_from_module
     end
 
-    def self.original_impl_in_module; end
+    def original_impl_from_module; end
 
     def self.method_in_module
       original_impl_in_module
     end
+
+    def self.original_impl_in_module; end
   end
 
   class TargetClass
