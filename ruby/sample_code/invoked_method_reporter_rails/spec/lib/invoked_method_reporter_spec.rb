@@ -47,84 +47,85 @@ describe InvokedMethodReporter do
         end.not_to raise_error
       end
     end
+  end
 
-    context 'when the method is defined in the target module' do
+  describe 'methods coming from a module' do
+    describe 'class level method defined on the target module' do
       it 'invokes the reporter then the original implementation' do
-        expect(described_class).to receive(:report).ordered.and_call_original
+        expected_method_definition = 'TargetModule.class_method_on_module'
+
+        expect(described_class).to receive(:report)
+          .with(expected_method_definition).ordered.and_call_original
         expect(TargetModule).to receive(:original_class_impl_in_module).ordered
 
         TargetModule.class_method_on_module
       end
     end
 
-    context 'when the method is defined in an included module' do
-      context 'object level method' do
-        it 'invokes the reporter then the original implementation' do
-          target_class_object = TargetClass.new
+    describe 'object level method of a class' do
+      it 'invokes the reporter then the original implementation' do
+        target_class_instance = TargetClass.new
 
-          expect(described_class).to receive(:report).ordered.and_call_original
-          expect(target_class_object).to receive(:original_impl_from_module).ordered
+        expected_method_definition = 'TargetModule#method_from_module'
 
-          target_class_object.method_from_module
-        end
-      end
+        expect(described_class).to receive(:report).ordered.and_call_original
+        expect(target_class_instance).to receive(:original_impl_from_module).ordered
 
-      context 'class level method' do
-        it 'invokes the reporter then the original implementation' do
-          expect(described_class).to receive(:report).ordered.and_call_original
-          expect(TargetClass).to receive(:original_impl_from_module).ordered
-
-          TargetClass.method_from_module
-        end
+        target_class_instance.method_from_module
       end
     end
 
-    context 'when the method is defined the class itself' do
-      context 'object level method' do
-        it 'invokes the reporter then the original implementation' do
-          target_class_object = TargetClass.new
+    describe 'class level method of a class' do
+      it 'invokes the reporter then the original implementation' do
+        expected_method_definition = 'TargetModule#method_from_module'
 
-          expect(described_class).to receive(:report).ordered.and_call_original
-          expect(target_class_object).to receive(:original_impl_from_module).ordered
+        expect(described_class).to receive(:report)
+          .with(expected_method_definition).ordered.and_call_original
+        expect(TargetClass).to receive(:original_impl_from_module).ordered
 
-          target_class_object.instance_method_from_class
-        end
-      end
-
-      context 'class level method' do
-        it 'invokes the reporter then the original implementation' do
-          expect(described_class).to receive(:report).ordered.and_call_original
-          expect(TargetClass).to receive(:original_impl_from_module).ordered
-
-          TargetClass.class_method_from_class
-        end
+        TargetClass.method_from_module
       end
     end
   end
 
-  describe '.report' do
-    context 'when the method is defined in a module and added to the class' do
-      it 'invokes Rollbar with the right params' do
-        expected_message = '[InvokedMethodReporter] TargetModule#method_from_module was invoked'
+  describe 'methods coming from a class' do
+    describe 'object level method' do
+      it 'invokes the reporter then the original implementation' do
+        target_class_instance = TargetClass.new
 
-        expect(Rollbar).to receive(:info).with(expected_message, anything).exactly(2).times
+        expected_method_definition = 'TargetClass#instance_method_from_class'
 
-        TargetClass.method_from_module
-        TargetClass.new.method_from_module
+        expect(described_class).to receive(:report)
+          .with(expected_method_definition).ordered.and_call_original
+        expect(target_class_instance).to receive(:original_impl_from_module).ordered
+
+        target_class_instance.instance_method_from_class
       end
     end
 
-    context 'when the method is defined by the class itself' do
-      it 'invokes Rollbar with the right params' do
-        expected_message1 = '[InvokedMethodReporter] TargetClass#instance_method_from_class was invoked'
-        expected_message2 = '[InvokedMethodReporter] TargetClass.class_method_from_class was invoked'
+    describe 'class level method' do
+      it 'invokes the reporter then the original implementation' do
+        expected_method_definition = 'TargetClass.class_method_from_class'
 
-        expect(Rollbar).to receive(:info).with(expected_message1, anything)
-        expect(Rollbar).to receive(:info).with(expected_message2, anything)
+        expect(described_class).to receive(:report)
+          .with(expected_method_definition).ordered.and_call_original
+        expect(TargetClass).to receive(:original_impl_from_module).ordered
 
-        TargetClass.new.instance_method_from_class
         TargetClass.class_method_from_class
       end
+    end
+  end
+
+  describe 'reporting' do
+    it 'invokes Rollbar with the expected params' do
+      expected_message1 = '[InvokedMethodReporter] TargetClass#instance_method_from_class was invoked'
+      expected_message2 = '[InvokedMethodReporter] TargetClass.class_method_from_class was invoked'
+
+      expect(Rollbar).to receive(:info).with(expected_message1, anything)
+      expect(Rollbar).to receive(:info).with(expected_message2, anything)
+
+      TargetClass.new.instance_method_from_class
+      TargetClass.class_method_from_class
     end
   end
 end
