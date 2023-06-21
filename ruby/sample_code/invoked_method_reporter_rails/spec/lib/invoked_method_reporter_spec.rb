@@ -4,10 +4,10 @@ require 'rails_helper'
 
 describe InvokedMethodReporter do
   module TargetModule
-    def original_impl; end
+    def original_impl_from_module; end
 
     def method_from_module
-      original_impl
+      original_impl_from_module
     end
 
     def self.original_impl_in_module; end
@@ -19,11 +19,11 @@ describe InvokedMethodReporter do
 
   class TargetClass
     def method_from_class
-      original_impl
+      original_impl_from_module
     end
 
     def self.method_from_class
-      original_impl
+      original_impl_from_module
     end
   end
 
@@ -63,7 +63,7 @@ describe InvokedMethodReporter do
           target_class_object = TargetClass.new
 
           expect(described_class).to receive(:report).ordered.and_call_original
-          expect(target_class_object).to receive(:original_impl).ordered
+          expect(target_class_object).to receive(:original_impl_from_module).ordered
 
           target_class_object.method_from_module
         end
@@ -72,7 +72,7 @@ describe InvokedMethodReporter do
       context 'class level method' do
         it 'invokes the reporter then the original implementation' do
           expect(described_class).to receive(:report).ordered.and_call_original
-          expect(TargetClass).to receive(:original_impl).ordered
+          expect(TargetClass).to receive(:original_impl_from_module).ordered
 
           TargetClass.method_from_module
         end
@@ -85,7 +85,7 @@ describe InvokedMethodReporter do
           target_class_object = TargetClass.new
 
           expect(described_class).to receive(:report).ordered.and_call_original
-          expect(target_class_object).to receive(:original_impl).ordered
+          expect(target_class_object).to receive(:original_impl_from_module).ordered
 
           target_class_object.method_from_class
         end
@@ -94,7 +94,7 @@ describe InvokedMethodReporter do
       context 'class level method' do
         it 'invokes the reporter then the original implementation' do
           expect(described_class).to receive(:report).ordered.and_call_original
-          expect(TargetClass).to receive(:original_impl).ordered
+          expect(TargetClass).to receive(:original_impl_from_module).ordered
 
           TargetClass.method_from_class
         end
