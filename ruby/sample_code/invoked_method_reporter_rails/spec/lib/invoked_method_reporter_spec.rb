@@ -2,11 +2,6 @@
 
 require 'rails_helper'
 
-module Rollbar
-  def self.info(*args); end
-  def self.error(*args); end
-end
-
 describe InvokedMethodReporter do
   module TargetModule
     def original_impl; end
@@ -32,24 +27,16 @@ describe InvokedMethodReporter do
     end
   end
 
-  described_class.bind_to('TargetModule#unused_method_from_module')
-  described_class.bind_to('TargetModule.unused_method_in_module')
-
   TargetClass.include(TargetModule)
   TargetClass.extend(TargetModule)
 
-  described_class.bind_to('TargetClass#unused_method_from_class')
-  described_class.bind_to('TargetClass.unused_method_from_class')
+  before(:all) do
+    InvokedMethodReporter.setup('spec/fixtures/invoked_method_reporter_config.yml')
+  end
 
   after(:all) do
     Object.send(:remove_const, :TargetModule)
     Object.send(:remove_const, :TargetClass)
-  end
-
-  describe '.config' do
-    it 'returns an InvokedMethodReporter::Config object' do
-      expect(described_class.config).to be_kind_of(InvokedMethodReporter::Config)
-    end
   end
 
   describe '.bind_to' do

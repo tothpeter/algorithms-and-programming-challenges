@@ -3,15 +3,19 @@
 require 'invoked_method_reporter/binder'
 require 'invoked_method_reporter/class_level_binder'
 require 'invoked_method_reporter/object_level_binder'
-require 'invoked_method_reporter/config'
+
+module Rollbar
+  def self.info(*args); end
+  def self.error(*args); end
+end
 
 module InvokedMethodReporter
-  def self.config
-    @config ||= Config.new
-  end
+  CONFIG_FILE_PATH = 'config/invoked_method_reporter.yml'
 
-  def self.setup
-    bind_to(config.methods_to_report)
+  def self.setup(config_file_path = CONFIG_FILE_PATH)
+    config = YAML.load_file(config_file_path)
+
+    bind_to(config['methods'])
   end
 
   def self.bind_to(methods)
@@ -33,10 +37,10 @@ module InvokedMethodReporter
       sender: sender_trace
     }
 
-    # Rollbar.info(message, report_params)
+    Rollbar.info(message, report_params)
     Rails.logger.info("#{message} #{report_params.to_json}")
   rescue StandardError => e
-    # Rollbar.error('Error in InvokedMethodReporter.report', e)
+    Rollbar.error('Error in InvokedMethodReporter.report', e)
     raise e if Rails.env.test?
   end
 

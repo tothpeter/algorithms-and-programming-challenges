@@ -4,8 +4,10 @@
 
 methods: [
   # Modules
-  'UnusedModule#unused_method',
+  'TargetModule#unused_method_from_module',
+  'TargetModule.unused_method_in_module',
 
   # Classes
-  'User.last'
+  'TargetClass#unused_method_from_class',
+  'TargetClass.unused_method_from_class'
 ]
