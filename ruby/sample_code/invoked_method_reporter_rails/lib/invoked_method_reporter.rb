@@ -34,7 +34,7 @@ module InvokedMethodReporter
     message = "[InvokedMethodReporter] #{method_definition} was invoked"
 
     report_params = {
-      sender: sender_trace
+      sender: backtrace
     }
 
     Rollbar.info(message, report_params)
@@ -44,7 +44,7 @@ module InvokedMethodReporter
     raise e if Rails.env.test?
   end
 
-  def self.sender_trace
+  def self.backtrace
     backtrace_cleaner = ActiveSupport::BacktraceCleaner.new
 
     filters = [
@@ -60,5 +60,5 @@ module InvokedMethodReporter
     backtrace_cleaner.clean(caller).first
   end
 
-  private_class_method :sender_trace
+  private_class_method :backtrace
 end
