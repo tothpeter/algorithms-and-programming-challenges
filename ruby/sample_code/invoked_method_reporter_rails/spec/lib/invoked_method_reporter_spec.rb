@@ -122,8 +122,8 @@ describe InvokedMethodReporter do
         expect(Rollbar).to receive(:info).with(expected_message1, anything)
         expect(Rollbar).to receive(:info).with(expected_message2, anything)
 
-        TargetClass.class_method_from_class
         TargetClass.new.instance_method_from_class
+        TargetClass.class_method_from_class
       end
     end
   end
