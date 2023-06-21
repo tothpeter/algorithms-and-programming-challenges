@@ -1,9 +1,9 @@
 methods: [
   # Modules
-  'TargetModule#unused_method_from_module',
-  'TargetModule.unused_method_in_module',
+  'TargetModule#method_from_module',
+  'TargetModule.method_in_module',
 
   # Classes
-  'TargetClass#unused_method_from_class',
-  'TargetClass.unused_method_from_class'
+  'TargetClass#method_from_class',
+  'TargetClass.method_from_class'
 ]
