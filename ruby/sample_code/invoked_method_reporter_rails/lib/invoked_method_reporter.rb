@@ -3,6 +3,7 @@
 require 'invoked_method_reporter/binder'
 require 'invoked_method_reporter/class_level_binder'
 require 'invoked_method_reporter/object_level_binder'
+require 'invoked_method_reporter/reporter_job'
 
 module Rollbar
   def self.info(*args); end
@@ -32,19 +33,16 @@ module InvokedMethodReporter
 
   def self.report(method_definition)
     message = "[InvokedMethodReporter] #{method_definition} was invoked"
+    original_caller = fetch_original_caller
 
-    report_params = {
-      sender: backtrace
-    }
-
-    Rollbar.info(message, report_params)
-    Rails.logger.info("#{message} #{report_params.to_json}")
+    Rails.logger.info("#{message} #{original_caller}")
+    ReporterJob.perform_later(message, original_caller)
   rescue StandardError => e
     Rollbar.error('Error in InvokedMethodReporter.report', e)
     raise(e) if Rails.env.test?
   end
 
-  def self.backtrace
+  def self.fetch_original_caller
     backtrace_cleaner = ActiveSupport::BacktraceCleaner.new
 
     filters = [
@@ -60,5 +58,5 @@ module InvokedMethodReporter
     backtrace_cleaner.clean(caller).first
   end
 
-  private_class_method :backtrace
+  private_class_method :fetch_original_caller
 end
