@@ -2,4 +2,10 @@
 # Binding is useless for modules after they get included
 # or a class/module uses them with extend.
 
-methods_to_report: []
+methods_to_report: [
+  # Modules
+  'UnusedModule#unused_method',
+
+  # Classes
+  'User.last'
+]

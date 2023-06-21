@@ -33,10 +33,10 @@ module InvokedMethodReporter
       sender: sender_trace
     }
 
-    Rollbar.info(message, report_params)
+    # Rollbar.info(message, report_params)
     Rails.logger.info("#{message} #{report_params.to_json}")
   rescue StandardError => e
-    Rollbar.error('Error in InvokedMethodReporter.report', e)
+    # Rollbar.error('Error in InvokedMethodReporter.report', e)
     raise e if Rails.env.test?
   end
 
