@@ -56,12 +56,16 @@ describe InvokedMethodReporter do
 
         expected_method_definition = 'TargetModule#method_from_module'
 
-        expect(InvokedMethodReporter::Reporter).to receive(:report)
-          .ordered.and_call_original
-        expect(target_class_instance).to receive(:original_impl_from_module)
-          .ordered
+        allow(InvokedMethodReporter::Reporter).to receive(:report)
+          .and_call_original
+        allow(target_class_instance).to receive(:original_impl_from_module)
 
         target_class_instance.method_from_module
+
+        expect(InvokedMethodReporter::Reporter).to have_received(:report)
+          .ordered
+        expect(target_class_instance).to have_received(:original_impl_from_module)
+          .ordered
       end
     end
 
@@ -69,11 +73,15 @@ describe InvokedMethodReporter do
       it 'invokes the reporter then the original implementation' do
         expected_method_definition = 'TargetModule#method_from_module'
 
-        expect(InvokedMethodReporter::Reporter).to receive(:report)
-          .with(expected_method_definition).ordered.and_call_original
-        expect(TargetClass).to receive(:original_impl_from_module).ordered
+        allow(InvokedMethodReporter::Reporter).to receive(:report)
+          .and_call_original
+        allow(TargetClass).to receive(:original_impl_from_module)
 
         TargetClass.method_from_module
+
+        expect(InvokedMethodReporter::Reporter).to have_received(:report)
+          .with(expected_method_definition).ordered
+        expect(TargetClass).to have_received(:original_impl_from_module).ordered
       end
     end
 
@@ -81,11 +89,16 @@ describe InvokedMethodReporter do
       it 'invokes the reporter then the original implementation' do
         expected_method_definition = 'TargetModule.class_method_on_module'
 
-        expect(InvokedMethodReporter::Reporter).to receive(:report)
-          .with(expected_method_definition).ordered.and_call_original
-        expect(TargetModule).to receive(:original_class_impl_in_module).ordered
+        allow(InvokedMethodReporter::Reporter).to receive(:report)
+          .and_call_original
+        allow(TargetModule).to receive(:original_class_impl_in_module)
 
         TargetModule.class_method_on_module
+
+        expect(InvokedMethodReporter::Reporter).to have_received(:report)
+          .with(expected_method_definition).ordered
+        expect(TargetModule).to have_received(:original_class_impl_in_module)
+          .ordered
       end
     end
   end
@@ -97,11 +110,16 @@ describe InvokedMethodReporter do
 
         expected_method_definition = 'TargetClass#instance_method_from_class'
 
-        expect(InvokedMethodReporter::Reporter).to receive(:report)
-          .with(expected_method_definition).ordered.and_call_original
-        expect(target_class_instance).to receive(:original_impl_from_module).ordered
+        allow(InvokedMethodReporter::Reporter).to receive(:report)
+          .and_call_original
+        allow(target_class_instance).to receive(:original_impl_from_module)
 
         target_class_instance.instance_method_from_class
+
+        expect(InvokedMethodReporter::Reporter).to have_received(:report)
+          .with(expected_method_definition).ordered
+        expect(target_class_instance).to have_received(:original_impl_from_module)
+          .ordered
       end
     end
 
@@ -109,11 +127,15 @@ describe InvokedMethodReporter do
       it 'invokes the reporter then the original implementation' do
         expected_method_definition = 'TargetClass.class_method_from_class'
 
-        expect(InvokedMethodReporter::Reporter).to receive(:report)
-          .with(expected_method_definition).ordered.and_call_original
-        expect(TargetClass).to receive(:original_impl_from_module).ordered
+        allow(InvokedMethodReporter::Reporter).to receive(:report)
+          .and_call_original
+        allow(TargetClass).to receive(:original_impl_from_module)
 
         TargetClass.class_method_from_class
+
+        expect(InvokedMethodReporter::Reporter).to have_received(:report)
+          .with(expected_method_definition).ordered
+        expect(TargetClass).to have_received(:original_impl_from_module).ordered
       end
     end
   end
@@ -123,18 +145,17 @@ describe InvokedMethodReporter do
 
     it 'invokes Rollbar with the expected params' do
       expected_message = '[InvokedMethodReporter] TargetClass.class_method_from_class was invoked'
-
-      expect(Rollbar).to receive(:info).with(expected_message, anything)
+      allow(Rollbar).to receive(:info).and_call_original
 
       perform_enqueued_jobs do
         TargetClass.class_method_from_class
       end
+
+      expect(Rollbar).to have_received(:info).with(expected_message, anything)
     end
 
     it 'reports one method max InvokedMethodReporter::Reporter::MAX_REPORT_COUNT times' do
-      expect(InvokedMethodReporter::ReporterJob).to receive(:perform_later)
-        .exactly(InvokedMethodReporter::Reporter::MAX_REPORT_COUNT)
-        .times
+      allow(InvokedMethodReporter::ReporterJob).to receive(:perform_later)
         .and_call_original
 
       InvokedMethodReporter::Reporter::MAX_REPORT_COUNT.times do
@@ -142,6 +163,10 @@ describe InvokedMethodReporter do
       end
 
       InvokedMethodReporter::Reporter.report('fake_method')
+
+      expect(InvokedMethodReporter::ReporterJob).to have_received(:perform_later)
+        .exactly(InvokedMethodReporter::Reporter::MAX_REPORT_COUNT)
+        .times
     end
   end
 end
