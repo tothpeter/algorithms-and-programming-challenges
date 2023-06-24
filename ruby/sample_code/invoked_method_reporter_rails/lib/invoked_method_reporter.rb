@@ -22,6 +22,7 @@ module InvokedMethodReporter
     bind_to(config['method_definitions'])
   end
 
+  # method_definitions can be an array or a single item
   def self.bind_to(method_definitions)
     class_level_methods, obj_level_methods = Array(method_definitions)
                                                .partition { |m| m.include?('.') }
