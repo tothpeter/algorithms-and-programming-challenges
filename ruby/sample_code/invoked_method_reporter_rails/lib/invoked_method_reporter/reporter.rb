@@ -30,8 +30,7 @@ module InvokedMethodReporter
       backtrace_cleaner = ActiveSupport::BacktraceCleaner.new
 
       filters = [
-        'invoked_method_reporter/Reporter.rb',
-        'invoked_method_reporter.rb',
+        'invoked_method_reporter',
         'gems'
       ]
 
