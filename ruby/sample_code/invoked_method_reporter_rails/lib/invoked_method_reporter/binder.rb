@@ -13,7 +13,7 @@ module InvokedMethodReporter
 
     # method_definition is a string. Example: User#unused_method
     def initialize(method_definition)
-      @object_level = method_definition.include?(OBJECT_LEVEL_SEPARATOR)
+      @object_level_binding = method_definition.include?(OBJECT_LEVEL_SEPARATOR)
 
       @method_definition       = method_definition
       @namespace, @method_name = method_definition.split(separator)
@@ -30,11 +30,11 @@ module InvokedMethodReporter
     private
 
     def separator
-      @object_level ? OBJECT_LEVEL_SEPARATOR : CLASS_LEVEL_SEPARATOR
+      @object_level_binding ? OBJECT_LEVEL_SEPARATOR : CLASS_LEVEL_SEPARATOR
     end
 
     def target_const
-      if @object_level
+      if @object_level_binding
         @namespace.constantize
       else
         @namespace.constantize.singleton_class
