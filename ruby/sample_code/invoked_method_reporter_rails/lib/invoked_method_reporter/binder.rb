@@ -4,10 +4,12 @@ module InvokedMethodReporter
   class Binder
     attr_reader :namespace, :method_name, :method_definition
 
+    # method_definition is a string. Example: 'User#unused_method'
     def self.bind_to(method_definition)
       new(method_definition).bind
     end
 
+    # method_definition is a string. Example: 'User#unused_method'
     def initialize(method_definition)
       @method_definition       = method_definition
       @namespace, @method_name = method_definition.split(self.class::SEPARATOR)
