@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'invoked_method_reporter/binder'
-require 'invoked_method_reporter/class_level_binder'
-require 'invoked_method_reporter/object_level_binder'
 require 'invoked_method_reporter/reporter'
 require 'invoked_method_reporter/reporter_job'
 

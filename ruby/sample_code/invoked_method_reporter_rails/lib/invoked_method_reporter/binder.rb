@@ -2,35 +2,43 @@
 
 module InvokedMethodReporter
   class Binder
-    # method_definition is a string. Example: 'User#unused_method'
+    # Separate the namespace from the method name
+    OBJECT_LEVEL_SEPARATOR = '#' # User#full_name
+    CLASS_LEVEL_SEPARATOR  = '.' # User.find
+
+    # method_definition is a string. Example: User#unused_method
     def self.bind_reporter_to(method_definition)
-      if method_definition.include?(ObjectLevelBinder::SEPARATOR)
-        ObjectLevelBinder.new(method_definition).bind_reporter
-      else
-        ClassLevelBinder.new(method_definition).bind_reporter
-      end
+      new(method_definition).bind_reporter
     end
 
-    attr_reader :namespace, :method_name, :method_definition
-
-    # method_definition is a string. Example: 'User#unused_method'
+    # method_definition is a string. Example: User#unused_method
     def initialize(method_definition)
+      @object_level = method_definition.include?(OBJECT_LEVEL_SEPARATOR)
+
       @method_definition       = method_definition
-      @namespace, @method_name = method_definition.split(self.class::SEPARATOR)
+      @namespace, @method_name = method_definition.split(separator)
     end
 
     def bind_reporter
-      reporter = Reporter.new(method_name, method_definition)
+      reporter = Reporter.new(@method_name, @method_definition)
       target_const.prepend(reporter)
     rescue StandardError => e
-      error_message = "[InvokedMethodReporter] Can't watch #{method_definition} because #{e.message}"
+      error_message = "[InvokedMethodReporter] Can't watch #{@method_definition} because #{e.message}"
       Rails.logger.error(error_message)
     end
 
     private
 
+    def separator
+      @object_level ? OBJECT_LEVEL_SEPARATOR : CLASS_LEVEL_SEPARATOR
+    end
+
     def target_const
-      raise NotImplementedError
+      if @object_level
+        @namespace.constantize
+      else
+        @namespace.constantize.singleton_class
+      end
     end
   end
 end
