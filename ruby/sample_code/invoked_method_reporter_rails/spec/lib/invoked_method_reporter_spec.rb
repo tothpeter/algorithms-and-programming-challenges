@@ -39,11 +39,11 @@ describe InvokedMethodReporter do
     Object.send(:remove_const, :TargetClass)
   end
 
-  describe '.bind_to' do
+  describe '.watch' do
     context 'when the target constant is not defined' do
       it 'does not raise an error' do
         expect do
-          described_class.bind_to('NonExistentTargetModule#method')
+          described_class.watch('NonExistentTargetModule#method')
         end.not_to raise_error
       end
     end

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module InvokedMethodReporter
-  class Binder
+  class Reporter
     attr_reader :namespace, :method_name, :method_definition
 
     # method_definition is a string. Example: 'User#unused_method'
-    def self.bind_to(method_definition)
-      new(method_definition).bind
+    def self.watch(method_definition)
+      new(method_definition).watch
     end
 
     # method_definition is a string. Example: 'User#unused_method'
@@ -15,10 +15,10 @@ module InvokedMethodReporter
       @namespace, @method_name = method_definition.split(self.class::SEPARATOR)
     end
 
-    def bind
+    def watch
       target_const.prepend(module_to_prepend)
     rescue StandardError => e
-      error_message = "[InvokedMethodReporter] Can't bind #{method_definition} because #{e.message}"
+      error_message = "[InvokedMethodReporter] Can't watch #{method_definition} because #{e.message}"
       Rails.logger.error(error_message)
     end
 

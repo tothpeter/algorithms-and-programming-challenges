@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'invoked_method_reporter/binder'
-require 'invoked_method_reporter/class_level_binder'
-require 'invoked_method_reporter/object_level_binder'
+require 'invoked_method_reporter/reporter'
+require 'invoked_method_reporter/class_level_reporter'
+require 'invoked_method_reporter/object_level_reporter'
 require 'invoked_method_reporter/reporter_job'
 
 module Rollbar
@@ -19,20 +19,20 @@ module InvokedMethodReporter
   def self.setup(config_file_path = CONFIG_FILE_PATH)
     config = YAML.load_file(config_file_path)
 
-    bind_to(config['method_definitions'])
+    watch(config['method_definitions'])
   end
 
   # method_definitions can be an array or a single item
-  def self.bind_to(method_definitions)
+  def self.watch(method_definitions)
     class_level_methods, obj_level_methods = Array(method_definitions)
                                                .partition { |m| m.include?('.') }
 
     class_level_methods.each do |method_definition|
-      ClassLevelBinder.bind_to(method_definition)
+      ClassLevelReporter.watch(method_definition)
     end
 
     obj_level_methods.each do |method_definition|
-      ObjectLevelBinder.bind_to(method_definition)
+      ObjectLevelReporter.watch(method_definition)
     end
   end
 
@@ -54,7 +54,7 @@ module InvokedMethodReporter
     backtrace_cleaner = ActiveSupport::BacktraceCleaner.new
 
     filters = [
-      'invoked_method_reporter/binder.rb',
+      'invoked_method_reporter/Reporter.rb',
       'invoked_method_reporter.rb',
       'gems'
     ]

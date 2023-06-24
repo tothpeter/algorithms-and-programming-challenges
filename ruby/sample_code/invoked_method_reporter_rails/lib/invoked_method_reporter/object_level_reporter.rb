@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module InvokedMethodReporter
-  class ClassLevelBinder < Binder
-    SEPARATOR = '.'
+  class ObjectLevelReporter < Reporter
+    SEPARATOR = '#'
 
     private
 
     def target_const
-      namespace.constantize.singleton_class
+      namespace.constantize
     end
   end
 end
