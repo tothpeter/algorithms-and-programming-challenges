@@ -49,33 +49,23 @@ describe InvokedMethodReporter do
     end
   end
 
-  describe 'methods coming from a module' do
-    describe 'class level method defined on the target module' do
-      it 'invokes the reporter then the original implementation' do
-        expected_method_definition = 'TargetModule.class_method_on_module'
-
-        expect(InvokedMethodReporter::Reporter).to receive(:report)
-          .with(expected_method_definition).ordered.and_call_original
-        expect(TargetModule).to receive(:original_class_impl_in_module).ordered
-
-        TargetModule.class_method_on_module
-      end
-    end
-
-    describe 'object level method of a class' do
+  context 'when methods are defined in a module' do
+    context 'when the method is available on the object level of a class' do
       it 'invokes the reporter then the original implementation' do
         target_class_instance = TargetClass.new
 
         expected_method_definition = 'TargetModule#method_from_module'
 
-        expect(InvokedMethodReporter::Reporter).to receive(:report).ordered.and_call_original
-        expect(target_class_instance).to receive(:original_impl_from_module).ordered
+        expect(InvokedMethodReporter::Reporter).to receive(:report)
+          .ordered.and_call_original
+        expect(target_class_instance).to receive(:original_impl_from_module)
+          .ordered
 
         target_class_instance.method_from_module
       end
     end
 
-    describe 'class level method of a class' do
+    context 'when the method is available on the class level of a class' do
       it 'invokes the reporter then the original implementation' do
         expected_method_definition = 'TargetModule#method_from_module'
 
@@ -86,10 +76,22 @@ describe InvokedMethodReporter do
         TargetClass.method_from_module
       end
     end
+
+    context 'when the method is available on the class level of a module' do
+      it 'invokes the reporter then the original implementation' do
+        expected_method_definition = 'TargetModule.class_method_on_module'
+
+        expect(InvokedMethodReporter::Reporter).to receive(:report)
+          .with(expected_method_definition).ordered.and_call_original
+        expect(TargetModule).to receive(:original_class_impl_in_module).ordered
+
+        TargetModule.class_method_on_module
+      end
+    end
   end
 
-  describe 'methods coming from a class' do
-    describe 'object level method' do
+  context 'when methods are defined in a class' do
+    context 'object level method' do
       it 'invokes the reporter then the original implementation' do
         target_class_instance = TargetClass.new
 
@@ -103,7 +105,7 @@ describe InvokedMethodReporter do
       end
     end
 
-    describe 'class level method' do
+    context 'class level method' do
       it 'invokes the reporter then the original implementation' do
         expected_method_definition = 'TargetClass.class_method_from_class'
 
