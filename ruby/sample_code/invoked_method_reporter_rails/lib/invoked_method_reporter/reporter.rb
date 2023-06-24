@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This module is responsible for reporting the invocations of the methods
 module InvokedMethodReporter
   class Reporter < Module
     MAX_REPORT_COUNT = 5

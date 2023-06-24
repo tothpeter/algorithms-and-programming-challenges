@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
+# This module is responsible for binding a reporter to a method
 module InvokedMethodReporter
   class Binder
-    # Separate the namespace from the method name
+    # To separate the namespace from the method name
     OBJECT_LEVEL_SEPARATOR = '#' # User#full_name
     CLASS_LEVEL_SEPARATOR  = '.' # User.find
 
-    # method_definition is a string. Example: User#unused_method
     def self.bind_reporter_to(method_definition)
       new(method_definition).bind_reporter
     end
 
-    # method_definition is a string. Example: User#unused_method
     def initialize(method_definition)
       @object_level_binding = method_definition.include?(OBJECT_LEVEL_SEPARATOR)
 
@@ -34,6 +33,7 @@ module InvokedMethodReporter
     end
 
     def target_const
+      # Methods of a class are defined in the singleton class of the class
       if @object_level_binding
         @namespace.constantize
       else
