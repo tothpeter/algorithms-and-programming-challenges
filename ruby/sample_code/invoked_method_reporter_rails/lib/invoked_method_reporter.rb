@@ -19,11 +19,12 @@ module InvokedMethodReporter
   def self.setup(config_file_path = CONFIG_FILE_PATH)
     config = YAML.load_file(config_file_path)
 
-    bind_to(config['methods'])
+    bind_to(config['method_definitions'])
   end
 
-  def self.bind_to(methods)
-    class_level_methods, obj_level_methods = Array(methods).partition { |m| m.include?('.') }
+  def self.bind_to(method_definitions)
+    class_level_methods, obj_level_methods = Array(method_definitions)
+                                               .partition { |m| m.include?('.') }
 
     class_level_methods.each do |method_definition|
       ClassLevelBinder.bind_to(method_definition)

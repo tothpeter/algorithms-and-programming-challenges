@@ -1,4 +1,4 @@
-methods: [
+method_definitions: [
   # Modules
   'TargetModule#method_from_module',
   'TargetModule.class_method_on_module',
