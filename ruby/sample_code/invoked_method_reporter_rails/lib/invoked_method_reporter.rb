@@ -16,7 +16,7 @@ end
 # Then we wait a month and if the method is not invoked, we can safely remove it.
 #
 # To mark a method, we need to specify its method definition.
-# The method definition follows the following format: "{namespace}{spearator}{method_name}".
+# The method definition follows the following format: "{namespace}{separator}{method_name}".
 # Where:
 #   - namespace: is the constant name where the method is defined it can be a class or a module.
 #   - separator: is the # sign for instance methods or the . sign for class methods
@@ -26,7 +26,7 @@ end
 #   User#full_name
 #   User.last
 #
-# We use Rollbar monitor the invocations.
+# We use Rollbar to monitor the invocations.
 #
 # Usage:
 #   # This loads the config file and binds a reporter to the specified methods

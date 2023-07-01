@@ -5,7 +5,7 @@ module InvokedMethodReporter
   class Reporter < Module
     # The purpose of this constant is to avoid spamming the logs
     # not to trigger reporting for an exact number of times globally.
-    MAX_REPORT_COUNT = 5
+    MAX_REPORT_COUNT = 2
     @@report_counts = Hash.new(0)
     LOCK = Mutex.new
 
